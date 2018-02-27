@@ -1,0 +1,164 @@
+.. title: One of my side project: bback.me
+.. slug: one-of-my-side-project-bback-me
+.. date: 2017-12-30 18:18:38 UTC+01:00
+.. tags: en,computer
+.. category: 
+.. link: https://bback.me
+.. description: bback.me, my project to help ppeople find their lost items back.
+.. type: text
+.. previewimage: /images/title-bback.me.png
+
+.. image:: /images/title-bback.me.png
+     :alt: image du logo de rendre.fr
+     :class: "thumbnail img-responsive"
+     :align: center
+     :target: /images/title-bback.me.png
+
+
+.. class:: ad
+
+   It's been a few months since one of my personal projects get online.
+   Namely, https://rendre.fr, a service to help you find your lost items with the help of
+   *people*!
+
+This service is based on the observation that most people are willing to
+return a found object to its owner, if only they would be able to contact 
+him. 
+Thus, the number of posts on social networks about people having found lost
+items and seeking for their owner.
+
+.. TEASER_END
+
+How it works
+==============
+
+.. image:: /images/logolostre.svg
+     :class: "pull-right"
+     :width: 200px
+     :alt: bback.me logo
+
+.. class:: ad
+
+   The main idea — which in itself is not new — is to mark objects with an
+   identifier that allows the person who finds the object to contact its
+   owner. The novelty is to mark objects with a short internet addresses (URL),
+   recognizable as such.
+
+The main characteristics are as follows:
+
+- The service is free of charge and relies on user donations to balance operating costs.
+
+- Each person can choose the domain name that they think is most likely to be
+  recognized or understood by the person who finds the object.
+
+  For example, in France, we may use ``cqi.fr`` or ``rendre.fr``. In
+  Anglo-Saxon countries, ``bback.org`` and  ``bback.me`` will be more suitable.
+  For the Dutch, ``kwijt.nu`` will be more appropriate. More generally, the
+  domains ``hooz.it`` and ``lost.re`` are also available.
+
+We do not supply labels because it is difficult to provide formats suitable for different uses. You can use any means at your disposal to mark your objects.
+
+On a personal level, I frequently use labels produced with the help of a `label printer <https://rendre.fr/manage_/faq#how-to-mark-my-objects>`_ (€20 on line), or  textile labels `buyed online <https://rendre.fr/manage_/faq#you-sell labels>`_.
+
+Feel free to consult the `homepage <https://rendre.fr>`_ and `FAQ <https://rendre.fr/manage_/faq>`_ for more information,
+
+Organization
+============
+
+.. image:: /images/logoantipodae.png
+     :class: "pull-right"
+     :width: 200px
+     :alt: antipodae.fr logo
+
+
+.. class:: ad
+
+    I set up as an "auto-entrepreneur" in order to legally host my personal projects
+    that could generate costs and financial income. My "stage" name is
+    *Antipodae*. I will have other projects to present to you in the coming months.
+
+I had some concern about the cost of being an "auto-entrepreneur",
+especially the CFE (cotisation foncière des entreprises), but it is possible
+to avoid this tax if you don't have any financial income.
+
+
+Technique
+==========
+
+.. class:: ad
+
+   On the technical side, the site is developed in Python with the `framework
+   Web2py <web2py. org>`_. It is hosted by *Google App Engine*. 
+
+The *web2py* framework allows, taking into account the constraints of the GAE
+NoSQL database, to develop an application that can be hosted on GAE, but also
+be migrated under a more traditional environment if necessary. This solution
+was chosen so as not to be locked in the GAE ecosystem if it no longer met
+the need.
+
+The tests are developed with the help of `Pytest <https://pytest.org>`_ and
+`Splinter <https://splinter.readthedocs.io/en/latest/>`_ which in turn relies
+on `Selenium <http://www.seleniumhq.org/>`_ to perform UI tests. Continuous
+integration is managed by an instance of `Jenkins <https://jenkins-ci.org/>`_.
+
+The payment service is provided by `Stripe <https://stripe.com>`_. Integration
+tests use `Vcrpy <https://vcrpy.readthedocs.io/en/latest/>`_ to replay queries
+and answers from *Stripe* to save time and allow for offline tests replay.
+
+Sending mail is an important component of the service and is therefore
+duplicated between an internally managed `Exim <https://exim.org>`_ server,
+the `Sendgrid <https://sendgrid.com>`_ service and the mail sending service
+included with the GAE service as a last resort.
+
+
+
+Website
+========
+
+The service is composed of several identical sites, with the same name
+(rendre.fr, bback.org, kwijt.nu,...). All images of the site are generated
+from a source image in SVG format, then translated according to the language
+and site of destination, with the help of the translation tools provided by the
+web2py framework. For example for the home page strip:
+
+.. figure:: /images/strip-rendre.fr.png
+   :alt: French image for the site rendre.fr
+   :class: "thumbnail img-responsive"
+   :target: /images/strip-rendre.fr.png
+
+   Image in english for the site rendre.fr
+
+.. figure:: /images/strip-bback.me.png
+   :alt: image in English for the site bback.me
+   :class: "thumbnail img-responsive"
+   :target: /images/strip-bback.me.png
+
+   Image in English for the site bback.me
+
+
+In the following example, note that the name of the object entered by the user
+on his screen is translated.
+
+.. figure:: /images/frregister.png
+     :alt: image in French
+     :class: "thumbnail img-responsive"
+     :target: /images/frregister.png
+
+
+     French image for object registration 
+
+.. figure:: /images/enregister.png
+     :alt: image in English
+     :class: "thumbnail img-responsive"
+     :target: /images/enregister.png
+
+     Image in English for object registration 
+
+The frame of the site is built on a home made template `booststrap <https://getbootstrap.com/>`_.
+
+Conclusion
+==========
+
+I hope this site will be of some help. Feel free to use it and to give feedback.
+
+

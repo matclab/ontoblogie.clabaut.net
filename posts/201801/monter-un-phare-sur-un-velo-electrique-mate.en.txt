@@ -1,0 +1,163 @@
+.. title: Mounting a headlight on a MATE electric bicycle
+.. slug: mount-headlight-on-mate-electric-bike
+.. date: 2018-01-21 16:50:44 UTC+01:00
+.. tags: en,bike
+.. category: 
+.. link: 
+.. description: How to mount a headlight on the MATE folding electric bicycle
+.. type: text
+
+
+.. image:: /images/mate_bike.jpg
+     :alt: An electric folding MATE bicycle
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :align: center
+     :target: /images/mate_bike.jpg
+
+.. class:: ad
+
+    A little bit on the spur of the moment, I took part in a crowd
+    funding for an electric folding bike MATE. The funding was a success as
+    they raised over $6 million, more than 40 times the minimum amount
+    required to launch the project.
+
+I finally got this bike last month. My impressions are mixed and I'll tell you
+a bit about it afterwards, but in the meantime, wanting to use it to take the
+bus in the morning when it's still dark, I had to find a lighting solution.
+
+
+.. TEASER_END
+
+Connector 
+===========
+
+.. thumbnail:: /images/higo.jpg
+   :align: center
+
+There is a black and red connector on the front of
+the MATE that delivers 37 V when the control module is in *lighting* mode (after
+pressing the top button for a few seconds when the display backlight is on).
+It is clearly designed to power a headlight.
+
+I had some troubles finding the reference of this connector. It is in fact
+a *Higo mini B* that I was able to order on this `website
+<https://www.e-bike-technologies.de/index.php/en/connectors/higo/higo-mini-b-connectors>`_
+(or `archive
+<https://web.archive.org/web/*/https://www.e-bike-technologies.de/index.php/en/connectors/higo/higo-mini-b-connector>`_).
+Shipping costs are a bit expensive if you order nothing else, but I couldn't find
+better.
+
+
+Light
+========
+
+.. thumbnail:: /images/kit-ozo.jpg
+    :align: center
+
+I ordered this `lighting kit
+<https://ozo-electric.com/fr/eclairages-haute-puissance-pour-velos/736-kit-eclairage-avantfeu-arriere-ozo-200-lumens20-lumens>`_
+which seemed to me to meet my expectations ( powerful front headlight, rear
+headlight, possible to fix it on the bike and connectible to the *Higo mini*
+connector).
+
+
+Assembly and result
+===================
+
+
+.. class:: ad
+
+    The assembly was easy enough. The connector is sold mounted on a cable
+    about 60 cm long. I mounted the lamp on the connector with tin soldering
+    of the two previously stripped cables, all covered by a heat-shrinkable
+    sheath, and a little chatterton tape. 
+
+The cable from the front headlight to the rear headlight is a little short to allow
+the rear light to be positioned  at the top of the saddle — which is
+necessary to ensure proper folding of the bike. Care should be taken when
+folding the saddle.
+
+Here's what it looks like:
+
+
+.. figure:: /galleries/mate-bike/branchement_phare_avant.jpg
+     :alt: Front headlight connection and attachment
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :target: /galleries/mate-bike/branchement_phare_avant.jpg
+
+     Front headlight connection.
+
+.. figure:: /galleries/mate-bike/phare_avant.jpg
+     :alt: Front headlight attachment
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :target: /galleries/mate-bike/phare_avant.jpg
+
+     Front headlight attachment.
+
+.. figure:: /galleries/mate-bike/phare_arrière.jpg
+     :alt: Rear headlight
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :target: /galleries/mate-bike/phare_arrière.jpg
+
+     Rear headlight.
+
+.. figure:: /galleries/mate-bike/phare-avant_de_face.jpg
+     :alt: front headlight on
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :target: /galleries/mate-bike/phare-avant_de_face.jpg
+
+     Front headlight on.
+
+
+Impressions on the MATE bike
+============================
+
+.. class:: ad
+
+   The delivery is made in a large, TV-like package. The package is in
+   good condition. The bike assembly is carried out without too much hassle, except
+   for a pedal whose screw pitch is damaged. It took me some time to reform
+   the screw pitch of the pedal arm by mounting the pedal inside out before
+   reassembling it upright.
+
+Positive points
+----------------
+
+This bike is pretty nice. It is easy to use and gives a good help for the
+climbs. All in all, he does what was expected.
+
+It is fairly cheap (or at least it was at the time of the start of
+crowd funding).
+
+The quality of manufacture is reasonable, without being dazzling.
+
+
+Negative points or disappointments
+------------------------------------
+
+Here are some less satisfactory points:
+
+- The bike is advertised as a *Copenhagen* bike, but of course it is made in China.
+- Be careful to remove the battery key before folding the bike. The cables
+  that pass by the key can bend it. It happened to me once and I had a
+  hard time extracting it. Might as well say the key was unusable after that.
+- The development at the greatest speed does not make it possible to exceed
+  30 km/h without getting nowhere fast. That's a shame. A somewhat
+  larger development would have been welcomed.
+- The locking system of the folding does not seem very robust. It has already
+  jammed once, and I twisted the locking lever a little bit while trying to
+  loosen it. A small turn of screw solved the problem, but you must remain
+  vigilant when locking.
+
+Conclusion
+==========
+
+I will start using it on  a regular basis starting on Monday. Soon I will know
+a little more about the durability and real autonomy of this bike and if the
+headlight is bright enough for a night usage.
+

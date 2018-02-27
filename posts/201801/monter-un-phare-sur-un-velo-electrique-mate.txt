@@ -1,0 +1,165 @@
+.. title: Monter un phare sur un vélo électrique MATE
+.. slug: monter-un-phare-sur-un-velo-electrique-mate
+.. date: 2018-01-21 16:50:44 UTC+01:00
+.. tags: fr,vélo
+.. category: 
+.. link: 
+.. description: Comment monter un phare sur le vélo électrique pliable MATE
+.. type: text
+
+.. image:: /images/mate_bike.jpg
+     :alt: Un vélo électrique pliant MATE
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :align: center
+     :target: /images/mate_bike.jpg
+
+.. class:: ad
+
+    Un peu sur un coup de tête, j'ai participé à un `financement participatif
+    <https://www.indiegogo.com/projects/mate-the-coolest-ebike-ever-bicycle>`_
+    pour un vélo électrique pliant MATE. Le financement a été un succés
+    puisqu'ils ont levé plus de 6 millions de dollars, soit plus de 40 fois de
+    la somme minimale requise pour lancer le projet.
+
+J'ai finalement reçu ce vélo le moi dernier. Mes impressions sont mitigées et
+je vous en ferais brièvement part par la suite, mais dans l'immédiat, voulant
+l'utiliser pour aller prendre le bus le matin alors qu'il fait encore nuit, il
+me fallait trouver une solution d'éclairage.
+
+Voici la solution retenue:
+
+.. TEASER_END
+
+Connecteur
+===========
+
+.. thumbnail:: /images/higo.jpg
+   :align: center
+
+Il y a à l'avant du vélo MATE un connecteur noir et rouge qui délivre du 37 V
+lorsque le module de commande est en mode *éclairage* (après avoir laissé
+appuyer quelques secondes sur le bouton du haut, quand le rétro-éclairage de
+l'écran est allumé). Il est visiblement prévu pour alimenter une lampe.
+
+J'ai eu un peu de mal à trouver la référence de ce connecteur. Il s'agit en
+fait du  *Higo mini B* que j'ai pu commander sur ce 
+`site <https://www.e-bike-technologies.de/index.php/en/connectors/higo/higo-mini-b-connectors>`_
+(ou `archive 
+<https://web.archive.org/web/*/https://www.e-bike-technologies.de/index.php/en/connectors/higo/higo-mini-b-connector>`_).  
+Les frais de ports sont un peu chers si vous ne commandez que ça, mais je n'ai
+pas trouvé mieux.
+
+
+Lumière
+========
+
+.. thumbnail:: /images/kit-ozo.jpg
+       :align: center
+
+J'ai commandé ce `kit d'éclairage <https://ozo-electric.com/fr/eclairages-haute-puissance-pour-velos/736-kit-eclairage-avantfeu-arriere-ozo-200-lumens20-lumens>`_
+qui me semblait répondre à mes attentes (feu avant assez puissant, feu
+arrière, fixation possible sur le vélo et branchement possible via le
+connecteur *Higo mini B*).
+
+
+Montage et résultat
+===================
+
+
+.. class:: ad
+
+    Le montage s'est fait assez facilement. Le connecteur est vendu monté sur
+    un câble d'environ 60 cm de long. J'ai procédé  au montage de la lampe sur
+    le connecteur par une soudure à l'étain des deux câbles préalablement 
+    dénudés, le tout recouvert par une gaine termo-rétractable, et par un peu 
+    de scotch chatterton. 
+
+Le câble qui va  de la lampe avant à la lampe arrière est un peu court pour 
+permettre de positionner sereinement le feu arrière tout en haut de la selle 
+— ce qui est nécessaire pour assurer un bon pliage du vélo. Il faudra faire 
+attention en pliant la selle.
+
+Voici ce que ça donne :
+
+.. figure:: /galleries/mate-bike/branchement_phare_avant.jpg
+     :alt: Branchement et fixation du phare avant
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :target: /galleries/mate-bike/branchement_phare_avant.jpg
+
+     Branchement du phare avant.
+
+.. figure:: /galleries/mate-bike/phare_avant.jpg
+     :alt: Fixation du phare avant
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :target: /galleries/mate-bike/phare_avant.jpg
+
+     Fixation du phare avant.
+
+.. figure:: /galleries/mate-bike/phare_arrière.jpg
+     :alt: Phare arrière
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :target: /galleries/mate-bike/phare_arrière.jpg
+
+     Phare arrière.
+
+.. figure:: /galleries/mate-bike/phare-avant_de_face.jpg
+     :alt: Phare avant allumé
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :target: /galleries/mate-bike/phare-avant_de_face.jpg
+
+     Phare avant allumé.
+
+
+Impressions sur le vélo MATE
+============================
+
+.. class:: ad
+
+   La livraison s'est faite dans un gros colis de type téléviseur géant. Le 
+   colis est en bon état. Le montage s'effectue sans trop de soucis, hormis 
+   pour une pédale dont le pas de vis est abimé. Il m'a fallu un peu de temps 
+   pour reformer le pas de vis du bras de pédalier en montant la pédale à 
+   l'envers avant de la remonter à l'endroit.
+
+Points positifs
+----------------
+
+Ce vélo est assez sympa. Il est facile à utiliser et donne un bon coup de main 
+pour les montées. Il rend somme toute le service demandé. 
+
+Il est assez bon marché (ou en tout cas il l'était au moment du démarrage du 
+financement participatif).
+
+La qualité de fabrication est raisonnable, sans être éblouissante.
+
+
+Points négatifs ou déceptions
+-------------------------------
+
+Voici les quelques points moins satisfaisants :
+
+- Le vélo est annoncé comme un vélo *de Copenhague*, mais il est bien sûr 
+  fabriqué en chine.
+- Attention à enlever la clef de la batterie avant de plier le vélo. Les 
+  câbles qui passent près de la clef peuvent tordre cette dernière. Ça m'est 
+  arrivé une fois et j'ai eu du mal à l'extraire. Autant dire qu'elle était 
+  inutilisable après.
+- Le développement à la plus grande vitesse ne permet pas de dépasser les 
+  30 km/h sans devoir pédaler dans la semoule. C'est dommage. Un développement 
+  un peu plus grand aurait été apprécié.
+- Le système de verrouillage de l'ouverture ne semble pas très robuste. Il 
+  s'est déjà coincé une fois, et j'ai un peu tordu le levier de verrouillage 
+  en essayant de le décoincer. Un petit tour de vis à permis de résoudre le 
+  problème, mais il faut rester vigilant lors du verrouillage.
+
+Conclusion
+==========
+
+Je vais commencer lundi à l'utiliser régulièrement. J'en saurais bientôt un 
+peu plus sur sa durabilité, son autonomie réelle ainsi que sur l'efficacité
+des lampes.

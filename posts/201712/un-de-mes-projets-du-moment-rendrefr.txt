@@ -1,0 +1,176 @@
+.. title: Un de mes projets du moment : rendre.fr
+.. slug: un-de-mes-projets-du-moment-rendrefr
+.. date: 2017-12-30 18:18:38 UTC+01:00
+.. tags: fr,informatique
+.. category: 
+.. link: https://rendre.fr
+.. description: rendre.fr mon projet pour aider les gens à retrouver les objets perdus
+.. type: text
+.. previewimage: /images/title-rendre.fr.jpg
+
+
+.. image:: /images/title-rendre.fr.png
+     :alt: image du logo de rendre.fr
+     :class: "thumbnail img-responsive"
+     :align: center
+     :target: /images/title-rendre.fr.png
+
+
+.. class:: ad
+
+   Cela fait quelques mois que j'ai mis un ligne un de mes projets personnels
+   : https://rendre.fr, un service pour vous aider  à retrouver des objets
+   perdus avec l'aide des *gens* !
+
+Ce service a pour origine le constat que la plupart des gens sont prêts à
+rendre un objet trouvé à son propriétaire, mais qu'il est souvent 
+impossible d'entrer en communication avec ce dernier. On voit ainsi fleurir
+sur les réseaux sociaux les annonces relatives à des objets trouvés en quête
+de leur propriétaire.
+
+.. TEASER_END
+
+Fonctionnement
+==============
+
+.. image:: /images/logolostre.svg
+     :class: "pull-right"
+     :width: 200px
+     :alt: logo de rendre.fr
+
+.. class:: ad
+
+    L'idée principale — qui en soi n'est pas nouvelle — est de marquer les objets
+    avec un identifiant qui permet à la personne qui trouve l'objet, d'entrer en
+    contact avec son propriétaire. La nouveauté est de marquer les objets avec des
+    adresses internet (URL), reconnaissables comme telles.
+
+Les principales caractéristiques sont les suivantes :
+
+- le service est gratuit et repose sur les dons des utilisateurs pour
+  équilibrer les frais de fonctionnement.
+
+- chacun peut choisir le nom de domaine qu'il pense être le plus à même d'être
+  reconnu ou compris par la personne qui trouve l'objet.
+
+  Ainsi en France, on pourra utiliser ``cqi.fr`` ou ``rendre.fr``. Dans des pays
+  anglo-saxons, ``bback.org``, ``bback.me`` seront plus adaptés. Pour les
+  néerlandais, ``kwijt.nu`` sera plus approprié. Plus globalement, les domaines
+  ``hooz.it`` et ``lost.re`` sont aussi disponibles.
+
+- nous ne fournissons pas d'étiquette, car il est difficile de fournir des 
+  formats appropriés aux différents usages. Vous pouvez utiliser tout moyen à 
+  votre disposition pour marquer vos objets.
+
+  À titre personnel, j'utilise fréquemment des étiquettes produites à l'aide d'une
+  `imprimante adéquate
+  <https://rendre.fr/manage_/faq#comment-marquer-mes-objets>`_ (20 € en
+  ligne), ou bien des étiquettes textiles `achetées en ligne
+  <https://rendre.fr/manage_/faq#vendez-vous-des-tiquettes>`_.
+
+N'hésitez pas à consulter la `page d'accueil <https://rendre.fr>`_ et la `FAQ
+<https://rendre.fr/manage_/faq>`_ pour en savoir plus,
+
+Organisation
+============
+
+.. image:: /images/logoantipodae.png
+     :class: "pull-right"
+     :width: 200px
+     :alt: logo de antipodae.fr
+
+
+.. class:: ad
+
+    Je me suis constitué en auto-entrepreneur afin d'héberger mes projets
+    personnels susceptibles d'entraîner des frais et des rentrées financières. Mon
+    nom de « scène » est *Antipodae*. J'aurais d'autres projets à vous présenter
+    dans les mois à venir.
+
+Je craignais un peu les frais relatifs au statut d'auto-entrepreneur,
+notamment le CFE (cotisation foncière des entreprises), mais il est possible
+de se faire dégrever si on n'a pas de rentrée financière.
+
+
+Technique
+==========
+
+.. class:: ad
+
+   Côté technique, le site est développé en Python sur le `framework 
+   Web2py <web2py.org>`_. Il est hébergé par la solution *Google App 
+   Engine*. 
+
+Le framework *web2py* permet en prenant en compte les contraintes de la base
+NoSQL de GAE, de développer une application qu'il est possible d'héberger sur
+GAE, mais aussi de migrer sous un environnement plus classique si cela
+s'avérait nécessaire. Cette solution a été retenue afin de ne pas s'enfermer
+sur l'hébergement GAE si celui-ci ne répondait plus au besoin.
+
+Les tests sont développés avec l'aide de `Pytest <https://pytest.org>`_ et de
+`Splinter <https://splinter.readthedocs.io/en/latest/>`_ qui
+s'appuie lui-même sur `Selenium <http://www.seleniumhq.org/>`_ pour réaliser
+les tests d'UI. L'intégration continue est gérée par une instance de `Jenkins
+<https://jenkins-ci.org/>`_.
+
+Le service de paiement est fourni par `Stripe <https://stripe.com>`_. Les
+tests d'intégration utilisent `Vcrpy
+<https://vcrpy.readthedocs.io/en/latest/>`_ pour rejouer les requêtes et les
+réponses de *Stripe* afin de pouvoir gagner du temps et rejouer les tests hors
+connexion.
+
+L'envoi de mail est une composante importante du service et est par
+conséquent redondé entre un serveur `Exim <https://exim.org>`_ géré en
+interne, le service `Sendgrid <https://sendgrid.com>`_ et le service d'envoi
+de mail inclus avec le service GAE en dernier recours.
+
+Site
+=====
+
+Le service est composé de plusieurs sites identiques, au nom près (rendre.fr,
+bback.org, kwijt.nu,…). Toutes les images du site sont générées à partir d'une image
+source au format SVG, puis traduite en fonction de la langue et du site de
+destination en s'appuyant sur les moyens de traduction fournis par le
+framework web2py. Par exemple pour le strip de la page d'accueil :
+
+.. figure:: /images/strip-rendre.fr.png
+     :alt: image en français pour le site rendre.fr
+     :class: "thumbnail img-responsive"
+     :target: /images/strip-rendre.fr.png
+
+     Image en français pour le site rendre.fr
+
+.. figure:: /images/strip-bback.me.png
+     :alt: image en anglais pour le site bback.me
+     :class: "thumbnail img-responsive"
+     :target: /images/strip-bback.me.png
+
+     Image en anglais pour le site bback.me
+
+
+Notez dans l'exemple suivant que le nom de l'objet saisi par l'utilisateur sur
+son écran est traduit.
+
+.. figure:: /images/frregister.png
+     :alt: image en français
+     :class: "thumbnail img-responsive"
+     :target:  /images/frregister.png
+
+
+     Image en français pour l'enregistrement d'un objet 
+
+.. figure:: /images/enregister.png
+     :alt: image en anglais
+     :class: "thumbnail img-responsive"
+     :target:  /images/enregister.png
+
+     Image en anglais pour l'enregistrement d'un objet 
+
+La trame du site est construite sur un template `booststrap
+<https://getbootstrap.com/>`_ maison.
+
+Conclusion
+==========
+
+J'espère que ce site rendra service. N'hésitez pas à l'utiliser et à me faire
+des retours.

@@ -1,0 +1,117 @@
+.. title: La SNCF et ses drôles de réductions
+.. slug: la-sncf-et-ses-droles-de-reductions
+.. date: 2018-02-18 12:19:48 UTC+01:00
+.. tags: fr,sncf
+.. category: 
+.. link: 
+.. description: Comment se faire arnaquer par la SNCF. 
+.. type: text
+
+.. figure:: /images/amputation.jpg
+     :alt: Les réductions de la SNCF
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :align: center
+     :target: /images/amputation.jpg
+
+     Ça vous coûte un bras ? On va vous faire une petite réduction…
+
+
+.. class:: ad
+
+    La SNCF, c'est pas toujours simple, c'est cher, mais c'est quand même plus
+    reposant et plus sûr que la voiture pour les longs trajets. Nous prenons
+    donc au moins une ou deux fois par an le train pour aller voir la famille
+    à l'autre bout de la France.
+
+Cette année nous sommes sept à partir, car nous accueillons Hannah, la
+chouette correspondante allemande de notre deuxième fille.
+
+La SNCF nous propose sur son site des taris assez élevés (compter 800 € pour
+traverser la france selon l'axe Aix-En-Provence / Lille), et à notre grande
+surprise, les billets avec une réduction à 40 % sont au même prix que ceux
+sans réduction (voir copie d'écran de l'époque ci-dessous).
+
+.. TEASER_END
+
+.. figure:: /images/sncf_screenshot.png
+     :alt: Copie d'écran de l'époque
+     :class: "thumbnail img-responsive"
+     :target: /images/sncf_screenshot.png
+
+     Copie de l'écran de l'époque. À gauche avec 40 % de réduction et à
+     droite, plein tarif.
+
+Je prends donc le temps d'aller au guichet de la gare la plus proche
+(aujourd'hui la ligne SNCF est fermée, j'imagine que la gare aussi) pour avoir
+un interlocuteur capable de me vendre les billets les moins chers.
+
+Je paye la colossale somme demandée par le guichetier — ce n'est pas comme si
+j'avais vraiment le choix — vérifie que tous les trajets correspondent à ce
+que j'ai demandé et je retourne vers la voiture.
+
+Sur le chemin je regarde les prix et constate désabusé que le prix d'un voyage
+pour un adulte sans réduction est presque 10 % moins cher que le billet avec la
+carte de réduction famille nombreuse à 40 % ! Incroyable, non ?
+
+Je retourne donc à la gare interroger le guichetier sur cette différence de
+prix. Il ne comprend pas, mais propose de  m'échanger les billets avec
+réduction (donc plus chers) contre des billets sans réductions (les moins
+chers, oui, je sais, ce n'est pas facile de suivre)…
+
+Et on peut encore le vérifier aujourd'hui, il n'y a pas, ou presque pas de
+différence de prix entre un achat sans réduction et un achat avec une réduction
+à 40 % :
+
+.. figure:: /images/sncf_comparaison_tarifs.png
+     :alt: Copie d'écran aujourd'hui 
+     :class: "thumbnail img-responsive"
+     :target: /images/sncf_comparaison_tarifs.png
+
+     Copie de l'écran aujourd'hui sur le site OUI.sncf pour un départ le 23
+     avril.
+
+.. class:: ad
+
+    Vous voulez rire (jaune) encore un peu ?
+    
+J'ai envoyé un mail de réclamation à la SNCF, en demandant pourquoi la carte
+de réduction n'était pas effective, et j'ai reçu la réponse suivante :
+
+    Vous demandez le remboursement du billet acheté au tarif LOISIR, car vous
+    n'aviez pas votre carte de réduction.
+
+    Je suis désolée de cette situation, aussi j'ai le plaisir de vous
+    informer, que je viens de procéder au virement de la somme de 49.40 euros.
+    Ce montant correspond au remboursement total de la réduction à laquelle
+    vous pouviez prétendre au moment de votre voyage, grâce à votre carte.
+    Cette décision reste exceptionnelle, et a été prise pour vous remercier de
+    votre fidélité, car lors d'un échange le jour du départ, une retenue de 5
+    euros est appliquée. Cette somme sera disponible sur votre compte dans une
+    vingtaine de jours, selon le délai nécessaire aux opérations comptables et
+    bancaires.
+
+    Avec toute notre attention,
+    Nadia Mine
+
+
+C'est très gentil de faire un geste commercial, mais la réponse reste
+complètement à côté de la plaque. 
+
+J'ai aussi envoyé un mail à la DGCCRF, en estimant qu'il y avait tromperie
+dans le fait de proposer des réductions qui n'en sont pas, mais je n'ai pas eu
+de réponse de leur part.
+
+.. class:: ad
+
+    Quel modèle de société veut-on ? Une France où prendre la voiture coûte
+    deux fois plus cher que prendre le train, sans compter les externalités
+    négatives (accidents, pollution, renforcement du tout pétrole, usure de la
+    route,…) ou une France qui va vers une maximisation des transports en
+    communs ?
+
+J'ai une petite idée du modèle de société que j'aimerais vois fleurir dans les
+années à venir, mais si j'en crois *le rapport Spinetta* ou au moins ce qui en
+transparait dans la presse, ce n'est pas le souhait des élites financières…
+
+

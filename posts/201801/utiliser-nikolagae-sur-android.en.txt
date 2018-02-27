@@ -1,0 +1,161 @@
+.. title: Use Nikola/GAE on android device
+.. slug: use-nikola-gae-on-android-device
+.. date: 2018-01-20 15:01:42 UTC+01:00
+.. tags: en,computer
+.. category:
+.. link:
+.. description: How to use Nikola to write your blog and deploy it on GAE from an Android phone
+.. type: text
+
+
+.. class:: ad
+
+    Some time ago I discovered `Termux <https://termux.com>`_ this cool
+    Android app that allows you to find a good part of your linux environment
+    on your phone or tablet. 
+
+It has helped me more than once to make a quick change on the move, save it
+under git or mercurial before pushing it towards continuous integration. Since
+I've `migrated this blog under Nikola
+<link://slug/migrating-blog-to-nikola-+-gae>`_ I was thinking it would be convenient to be
+able to work on blog posts on the move, to preview them in a browser and to deploy
+the whole blog on GAE, everything from a phone.
+
+It actually works pretty well.
+
+
+.. figure:: /images/screenshot-termux.png
+     :alt: editing this blog under termux
+     :class: "thumbnail img-responsive"
+     :width: 200px
+     :align: center
+     :target: /images/screenshot-termux.png
+
+     Screenshot of editing this blog on android with termux.
+
+
+Here are the steps to follow:
+
+.. TEASER_END
+    
+Install Termux
+=================
+
+This is simply done from the Google Play app store or better from the `f-droid <https://f-droid.org/repository/browse?fdid=com.termux>`_ repository.
+
+
+Install mercurial (optional)
+============================
+`Mercurial <https://www.mercurial-scm.org/>`_ allows me to manage the history
+of my blog editing and to push it into a `bitbucket
+<https://www.mercurial-scm.org/>`_ private repository. I like mercurial as
+revision system management tool mainly because of its consistent and well documented interface. Of course you can also use git.
+
+.. code:: shell
+
+   pkg install python2-dev python-dev
+   pip2 install mercurial
+
+
+Install Nikola
+================
+
+Preparing a virtual environment
+----------------------------------
+
+.. code:: shell
+
+   pip install virtualenvwrapper
+   mkvirtualenv nikola
+
+Install Nikola itself
+--------------------------------
+
+.. code:: shell
+
+   workon nikola # if you are not already in the virtualenv
+   pkg install libxml2-dev libjpeg-turbo-dev libxslt-dev
+   LDFLAGS="-L/system/lib/" CFLAGS="-I/data/data/com.termux/files/usr/include/" pip install "Nikola[extras]"
+
+
+Install the google cloud sdk
+-----------------------------
+
+I took my inspiration from the notes by `geoffrey looker <https://github.com/geoffreylooker/termux>`_:
+
+
+.. code:: shell
+
+   export CLOUDSDK_PYTHON=/data/data/com.termux/files/usr/bin/python2.7
+   curl -k https://storage.googleapis.com/gceprd-iso/google-cloud-sdk-134.0.0-linux-x86_64__TERMUX.tar.gz -O
+   tar -xzf google-cloud-sdk-134.0.0-linux-x86_64__TERMUX.tar.gz
+   cd google-cloud-sdk
+   bash ./install.sh
+   bash a #(or zsh depending upon your taste)
+   gcloud components update
+   ~/update-gcloud-sheebang.sh
+   gcloud auth login
+
+
+Where the script :code:`update-gcloud-sheebang` updates the `shebang
+<https://fr.wikipedia.org/wiki/Shebanghttps://fr.wikipedia.org/wiki/Shebang>`_
+of each file potentially updated by the command :code:`gcloud components
+update` and contains the following few lines:
+
+
+.. code:: shell
+
+   #!/data/data/com.termux/files/usr/bin/bash
+   scratch=$(mktemp -d -t tmp.XXXXXXXXXX)
+   cd ~/google-cloud-sdk/
+   find $(pwd) -type f -exec awk '
+     /^#!.*/{print FILENAME}
+     {nextfile}' {} + > "$scratch"/lines.txt
+   xargs -0 -n 1 termux-fix-shebang < <(tr \\n \\0 < "$scratch"/lines.txt)
+
+
+
+Writing and publishing
+======================
+Restart a shell and then:
+
+.. code:: shell
+
+   workon nikola
+   nikola auto
+
+Then visualize your site in an android browser by visiting http://localhost:8000.
+
+.. figure:: /images/screenshot-firefox-android.png
+     :alt: browsing the blog locally with firefox, served by nikola
+     :class: "thumbnail img-responsive"
+     :width: 200px
+     :align: center
+     :target: /images/screenshot-firefox-android.png
+
+     Screenshot of direfox browsing the blog served by nikola on the phone.
+
+
+And finally deploy it on Google App Engine with the command :code:`nikola deploy`.
+
+
+What remains to be improved
+============================
+
+- I have some error messages like ``[2018-01-19T21:28:28Z] WARNING: Nikola:
+  Local fr_FR. utf8 for language fr not accepted by local python`` and
+  apparently the locales are not well supported by termux. I'm not quite sure
+  of the consequences.
+- During my first tests, I realized that some utf8 characters were not well
+  rendered under ``vim``. I may have a configuration to complete.
+- The ``jpegoptim`` software is not available on *termux*, I had to disable it
+  in the *nikola* filter configuration which allows the optimization of *jpeg*
+  files for the web.
+
+I will update this post to reflect any improvements or other problems I have encountered.
+
+
+
+
+
+

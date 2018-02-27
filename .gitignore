@@ -1,0 +1,10 @@
+cache
+output
+conf.py.import_blogger-20171228_142937
+__pycache__
+.doit.db
+state_data.json
+**.swp
+*.orig
+.hg
+.hgignore
