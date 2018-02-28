@@ -100,14 +100,14 @@
             </form>
 
             % for k in sorted(data.keys(), reverse=True):
-            % if post._base_path in k:
+            % if post.meta('slug') in k:
 
             <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Comment by: ${data[k]['name'] | h}</h3>
             </div>
             <div class="panel-body">
-                ${data[k]['comment'] | h}
+                ${data[k]['message'] | h}
             </div>
             </div>
             % endif
