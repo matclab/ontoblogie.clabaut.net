@@ -1280,6 +1280,7 @@ BODY_END = """
   ga('create', 'UA-55431698-2', 'auto');
   ga('send', 'pageview');
 </script>
+<script src="/assets/js/staticman-comments.js"></script>
 """
 
 # The possibility to extract metadata from the filename by using a
