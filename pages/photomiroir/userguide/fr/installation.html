@@ -1,0 +1,177 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>2. Configuration préliminaire &#8212; Documentation PhotoMiroir </title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="3. Configuration" href="configuration.html" />
+    <link rel="prev" title="1. Fonctionnalités" href="features.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="preliminary-setup">
+<h1>2. Configuration préliminaire<a class="headerlink" href="#preliminary-setup" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="plugging-the-photomiroir">
+<h2>2.1. Brancher le <em>PhotoMiroir</em><a class="headerlink" href="#plugging-the-photomiroir" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Branchez simplement le cordon d’alimentation sur le port micro-USB et le câble de l’appareil photo sur un des quatre ports USB.</p>
+<p>Assurez-vous que la carte micro-SD est correctement enfichée.</p>
+</div>
+<div class="section" id="wifi-setup">
+<span id="wifisetup"></span><h2>2.2. Configuration du WIFI<a class="headerlink" href="#wifi-setup" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Cette section décrit comment vous pouvez configurer le <em>PhotoMiroir</em> pour le connecter à votre réseau WIFI local.</p>
+<div class="section" id="via-the-photomiroir-own-wifi">
+<h3>2.2.1. Par le WIFI du boîtier PhotoMiroir<a class="headerlink" href="#via-the-photomiroir-own-wifi" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Le boîtier du <em>PhotoMiroir</em> met à votre disposition un réseau WIFI dont le nom (SSID) est <code class="docutils literal notranslate"><span class="pre">PhotoMiroir</span></code>. Une fois le boîtier du <em>PhotoMiroir</em> démarré, vous pouvez y connecter votre ordinateur ou votre smartphone.</p>
+<p>Ensuite, vous pouvez utiliser un navigateur web pour naviguer à l’adresse <a class="reference external" href="http://photomiroir.fr">http://photomiroir.fr</a> et cliquer sur le lien <em>admin</em> pour accéder à la page web permettant de changer la configuration du WIFI.</p>
+<p>Sur la page de configuration (voir <a class="reference internal" href="#adminpage"><span class="std std-numref">Fig. 2.1</span></a>), cliquez sur le lien <em>Configuration système et réseaux</em> ❹:</p>
+<div class="figure align-center" id="id1">
+<span id="adminpage"></span><img alt="Admin page" src="/images/pages/admin.png" />
+<p class="caption"><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Page d’administration</span></p>
+</div>
+<p>Et ensuite remplissez les champs <code class="docutils literal notranslate"><span class="pre">host_ssid</span></code> et <code class="docutils literal notranslate"><span class="pre">host_wifi_pass</span></code> avec le nom et le mot de passe du réseau wifi auquel vous voulez que le <em>PhotoMiroir</em> se connecte (see <a class="reference internal" href="#changewifi"><span class="std std-numref">Fig. 2.2</span></a>).</p>
+<div class="figure align-center" id="id2">
+<span id="changewifi"></span><img alt="Change wifi configuration" src="/images/pages/change-wifi-config.png" />
+<p class="caption"><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Modifier la configuration du wifi</span></p>
+</div>
+</div>
+<div class="section" id="via-photomiroir-micro-sd-card">
+<h3>2.2.2. Par l’intermédiaire de la carte micro-SD<a class="headerlink" href="#via-photomiroir-micro-sd-card" title="Lien permanent vers ce titre">¶</a></h3>
+<ul>
+<li><p class="first">Insérer la carte micro-SD dans le lecteur de votre ordinateur.</p>
+</li>
+<li><p class="first">Assurez-vous que la petite partition est montée.</p>
+</li>
+<li><p class="first">Créez sur cette partition un fichier nommé <code class="docutils literal notranslate"><span class="pre">wifi.conf</span></code>. Ce fichier doit décrire la configuration de votre réseau WIFI selon le format suivant:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">network</span><span class="o">=</span><span class="p">{</span>
+   <span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;SSID NAME&quot;</span>
+   <span class="n">psk</span><span class="o">=</span><span class="s2">&quot;password string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Démontez la carte micro-SD et insérez là dans le boîtier du <em>PhotoMiroir</em>.</p>
+</li>
+<li><p class="first">Branchez le <em>PhotoMiroir</em>. Il doit alors apparaître sur votre réseau.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="getting-the-local-ip-address">
+<span id="getip"></span><h2>2.3. Récupérer l’adresse IP locale<a class="headerlink" href="#getting-the-local-ip-address" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Une fois le wifi configuré comme décrit dans <a class="reference internal" href="#wifisetup"><span class="std std-ref">Configuration du WIFI</span></a>, vous pouvez récupérer l’adresse IP locale du <em>Photomiroir</em> en vous connectant au wifi ayant le SSID <code class="docutils literal notranslate"><span class="pre">PhotoMiroir</span></code> puis en naviguant à l’adresse <a class="reference external" href="http://photomiroir.fr/admin">http://photomiroir.fr/admin</a>.</p>
+<p>Vous trouverez en haut de la page web quelque-chose comme <code class="docutils literal notranslate"><span class="pre">(LAN</span> <span class="pre">IP</span> <span class="pre">:</span> <span class="pre">192.168.0.44)</span></code>. L’adresse IP locale est <code class="docutils literal notranslate"><span class="pre">192.168.0.44</span></code>. Vous pouvez maintenant vous connecter au <em>Photomiroir</em> en naviguant vers <a class="reference external" href="http://192.168.0.44">http://192.168.0.44</a> (remplacez par l’adresse que vous avez vu affichée).</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/logo.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">PhotoMiroir</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">A simple and nice photo booth</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Table des matières&nbsp;:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="features.html">1. Fonctionnalités</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Configuration préliminaire</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#plugging-the-photomiroir">2.1. Brancher le <em>PhotoMiroir</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wifi-setup">2.2. Configuration du WIFI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#via-the-photomiroir-own-wifi">2.2.1. Par le WIFI du boîtier PhotoMiroir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#via-photomiroir-micro-sd-card">2.2.2. Par l’intermédiaire de la carte micro-SD</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-the-local-ip-address">2.3. Récupérer l’adresse IP locale</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">3. Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">4. Utilisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">5. Annexe</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="features.html" title="Chapitre précédent">1. Fonctionnalités</a></li>
+      <li>Next: <a href="configuration.html" title="Chapitre suivant">3. Configuration</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Antipodae.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/installation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

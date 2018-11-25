@@ -1,0 +1,162 @@
+.. title: Un autre projet du moment : le photo-miroir
+.. slug: photo-miroir
+.. date: 2018-10-28 17:54:22 UTC+01:00
+.. tags: fr,informatique,raspberry
+.. category: 
+.. link: 
+.. description: Le Photo-miroir 
+.. type: text
+
+.. image:: /images/photomiroir/photomiroir-alice.png
+     :class: "float-right"
+     :width: 200px
+     :alt: Photo prise par le photo-miroir de La Scène
+
+.. class:: ad
+
+
+
+.. class:: ad
+
+    Axel, un ami de longue date, a changé d'orientation professionnelle il y a
+    quelques années, pour lancer « `La Scène
+    <https://www.lascene-aix.com/>`_ » à Aix. C'est un lieu familial et
+    sympathique où vous pouvez passer un moment après le travail en semaine
+    autour d'un verre et de tapas. Il y a des concerts, des improvisation
+    théâtrales et encore bien d'autres chose, car La Scène se veut un lieu
+    d'accueil artistique et bien plus encore.
+
+.. TEASER_END
+
+Contexte
+========
+
+Avec une de ses connaissances qui est photographe, Axel intégré un miroir
+photographique, descendant *low-tech* des « photobooths » que vous avez sans
+doute utilisés au détour d'un mariage ou d'un évènement festif.
+
+
+.. class:: ad
+
+    L'idée est de permettre aux gens de se prendre en photo dans la soirée,
+    mais en restant dans le style éclectique, retro-grand-mère et résolument
+    *low-tech* de La Scène. Par conséquence c'est une solution sans écran,
+    sans diodes, sans lumières, sans plastiques colorés qui a été conçue.
+    L'intégration réalisée à La Scène est particulièrement réussie, l'appareil
+    photo étant positionné derrière un grand miroir dans un carde à moulures
+    dorées, dont le tain a été enlevé au milieu sur une zone
+    circulaire du diamètre de l'objectif.
+
+
+.. figure:: /images/photomiroir/photomiroir1.jpg
+     :class: "thumbnail img-responsive"
+     :width: 500px
+     :align: center
+     :alt: Intégration du photo-miroir à La Scène
+     :target: /images/photomiroir/photomiroir1.jpg
+
+     Intégration du photo-miroir à La Scène
+
+L'appareil photo est un Nikon 3100, équipé d'un objectif 18-55mm et d'un
+flash externe.
+
+Un bouton à l'extrémité d'un câble permet aux clients de déclencher les
+photos. Ça donne ce type de photo de qualité professionnelle :
+
+.. figure:: /images/photomiroir/photomiroir-alice.png
+     :class: "thumbnail img-responsive"
+     :width: 500px
+     :align: center
+     :alt: Photos prises par le photo-miroir de La Scène « Alice »
+     :target: /images/photomiroir/photomiroir-alice.png
+
+     Photos prises par le photo-miroir de La Scène « Alice »
+
+Il manquait toutefois un certain nombre de fonctionnalités pour une
+utilisation dans ce type d'environnement :    
+
+- permettre de récupérer les photos pour les projeter sur écran géant
+  dans la salle principale (diaporama web fourni),
+- permettre aux clients de consulter les photos sur leur smartphone,
+- télécharger les photos sur flickr ou sur un site FTP pour les mettre à
+  disposition du public sur internet les jours suivants,
+- ajouter un filigrane textuel et/ou graphique sur chaque photo.
+
+.. figure:: /images/photomiroir/photomiroir2.jpg
+     :class: "thumbnail img-responsive"
+     :width: 500px
+     :align: center
+     :alt: Intégration du photo-miroir à La Scène
+     :target: /images/photomiroir/photomiroir2.jpg
+
+     Intégration du photo-miroir à La Scène. Le rond blanc au dessus du miroir
+     est le flash.
+
+À la demande d'Axel, je lui ai développé un petit boîtier à base de
+*Raspberry Pi* qui se branche sur l'appareil photo via un câble USB et sur le wifi local afin de
+remplir ces fonctionnalités.  Si vous voulez vous faire une idée plus précise, la `documentation utilisateur est visible ici </pages/photomiroir/userguide/fr/>`_.
+
+
+Technique
+=========
+
+Le *Raspberry Pi* utilisé est un modèle 3B+ qui a la particularité d'avoir un module
+wifi intégré. Le wifi est configuré pour accéder au LAN et pour fournir un
+portail captif permettant aux clients d'accéder aux photos depuis leur
+smartphone. L'OS est un linux *Arch linux*, configuré pour utiliser le dépôt
+`http://tardis.tiny-vps.com/aarm/ <http://tardis.tiny-vps.com/aarm/>`_ afin de
+pouvoir obtenir une configuration connue et testée.
+
+Les logiciels (gestionnaire des photos et interface web) sont écrits en
+python 3.7.
+
+Les autres logiciels mis en œuvre sont :
+
+- *gphoto2* (et son binding python) pour récupérer les photos,
+- *dnsmasq* + *hostapd* + *iptables* + *ngninx* pour le portail captif,
+- *sphinx* pour la documentation, accompagné de *robotframework* couplé à
+  *selenium* pour extraire automatiquement les copies d'écran de l'application
+  web de configuration,
+- `sigal <http://sigal.saimon.org/en/latest/>`_ pour générer la galerie photo,
+- *py.test* pour les tests,
+- *bottle* pour le serveur web de l'application d'administration et
+  configuration,
+- `diaporama <https://github.com/gre/diaporama>`_ comme librairie javascript
+  pour l'animation du diaporama (les images sont envoyées à la demande depuis
+  le serveur via des websockets)
+- *grafana*, *prometheus* et *prometheus push gateway* pour monitoring,
+- *tor* pour fournir un accès ssh de maintenance et dépannage (au moins sur la
+  version de test de La Scène),
+
+Photos
+======
+
+Voici un échantillon aléatoire des photos prises à La Scène :
+
+.. raw:: html
+
+    <style type="text/css"> 
+    .flickr_badge_image {margin:0px;display:inline;}
+    .flickr_badge_image img {border: 1px solid #666666 !important; padding:1px; margin:2px;}
+    #flickr_badge_wrapper {width:420px;text-align:left}
+    </style>
+    <center><div id="flickr_badge_wrapper"></center>
+    <script type="text/javascript"
+    src="https://www.flickr.com/badge_code_v2.gne?count=10&display=random&size=s&layout=x&source=user&user=155012756@N06"></script>
+    <center><small>Quelques photos au hasard.</small></center></div>
+
+Elles sont toutes visibles sur l'espace `Flickr de La Scène
+<https://www.flickr.com/photos/la_scene/albums>`_.
+
+Et ensuite ?
+============
+
+Un certains nombre d'améliorations ou de nouvelles fonctionnalités sont
+prévues. Il est possible que je passe le logiciel en open-source afin d'en
+faire profiter d'autres personnes. 
+
+Affaire à suivre…
+
+N'hésitez pas à `me contacter
+<mailto:mathieu@antipodae.fr>`_ si vous souhaitez d'autres
+informations.

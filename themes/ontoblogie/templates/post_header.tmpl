@@ -23,7 +23,7 @@
 
 <%def name="html_sourcelink()">
     % if show_sourcelink:
-        <p class="sourceline"><a href="${post.source_link()}" id="sourcelink">${messages("Source")}</a></p>
+        <p class="sourceline"><a href="${post.source_link()}" class="sourcelink">${messages("Source")}</a></p>
     % endif
 </%def>
 
@@ -31,21 +31,29 @@
     <header>
         ${html_title()}
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 % if author_pages_generated:
                     <a href="${_link('author', post.author())}">${post.author()|h}</a>
                 % else:
                     ${post.author()|h}
                 % endif
             </span></p>
-            <p class="dateline"><a href="${post.permalink()}" rel="bookmark"><time class="published dt-published" datetime="${post.formatted_date('webiso')}" itemprop="datePublished" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}</time></a></p>
+            <p class="dateline">
+            <a href="${post.permalink()}" rel="bookmark">
+            <time class="published dt-published" datetime="${post.formatted_date('webiso')}" itemprop="datePublished" title="${post.formatted_date(date_format)|h}">${post.formatted_date(date_format)|h}</time>
+            % if post.updated and post.updated != post.date:
+                <span class="updated"> (${messages("updated")}
+                    <time class="updated dt-updated" datetime="${post.formatted_updated('webiso')}" itemprop="dateUpdated" title="${post.formatted_updated(date_format)|h}">${post.formatted_updated(date_format)|h}</time>)</span>
+            % endif
+            </a>
+            </p>
+            % if not post.meta('nocomments') and site_has_comments:
+                <p class="commentline">${comments.comment_link(post.permalink(), post._base_path)}
+            % endif
             ${html_sourcelink()}
             % if post.meta('link'):
                     <p class="linkline"><a href="${post.meta('link')}">${messages("Original site")}</a></p>
             % endif
-            %if post.description():
-                <meta name="description" itemprop="description" content="${post.description()|h}">
-            %endif
         </div>
         ${html_translations(post)}
     </header>

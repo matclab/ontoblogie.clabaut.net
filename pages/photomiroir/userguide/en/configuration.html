@@ -1,0 +1,318 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>3. Configuration &#8212; PhotoMiroir  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Usage" href="usage.html" />
+    <link rel="prev" title="2. Preliminary Setup" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="configuration">
+<span id="config"></span><h1>3. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>Once the wifi is setup (see <a class="reference internal" href="installation.html#wifisetup"><span class="std std-numref">Section 2.2</span></a>), you can access the
+configuration panel by navigating with any web browser to
+<a class="reference external" href="http://192.160.0.44/admin">http://192.160.0.44/admin</a> (replace 192.168.0.44 by the address that was
+assigned to your <em>PhotoMiroir</em> as shown in <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
+<p>Most parameters are string or integers. Some parameters may be dynamically
+expanded with the current date or other parameters as explained in
+<a class="reference internal" href="#paramexpansion"><span class="std std-numref">Section 3.1.5</span></a>.</p>
+<div class="section" id="event-admin">
+<span id="admin"></span><h2>3.1. Event Admin<a class="headerlink" href="#event-admin" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="event-parameters">
+<span id="eventadmin"></span><h3>3.1.1. Event Parameters<a class="headerlink" href="#event-parameters" title="Permalink to this headline">¶</a></h3>
+<p>On the configuration page (see <a class="reference internal" href="installation.html#adminpage"><span class="std std-numref">Fig. 2.1</span></a>), click on the <em>Next
+Event Configuration</em> link ❶.</p>
+<p>The following parameters are then adjustables:</p>
+<div class="figure align-center" id="id1">
+<span id="changeevent"></span><img alt="Change event parameters" src="/images/pages/event-params.png" />
+<p class="caption"><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Change event parameters</span></p>
+</div>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">event</span></code></dt>
+<dd>The event name and would also becomes the name of the photo album
+in which subsequent photos will be stored.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">desc</span></code></dt>
+<dd>Description of the photo that will be added in the <code class="docutils literal notranslate"><span class="pre">ImageDescription</span></code> EXIF field.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tags</span></code></dt>
+<dd>Tags that will be added to the photos when uploaded to flickr.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">exif_comment</span></code></dt>
+<dd>Comment that will be added to the photos as <code class="docutils literal notranslate"><span class="pre">UserComment</span></code> EXIF field.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">gallery</span></code></dt>
+<dd>Should the <em>PhotoMiroir</em> create a local gallery that will be browsable via
+a web navigator.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">html_title</span></code></dt>
+<dd>Title of the main gallery HTML page.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">watermark_text</span></code></dt>
+<dd>Text that will be displayed as a watermark at the bottom of each
+photos.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">watermark_file</span></code></dt>
+<dd>Image that will be displayed as a watermark on the bottom right of each
+photos. It should be a PNG file with transparency.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">upload</span></code></dt>
+<dd>Shall the photos be uploaded onto a remote computer (either flickr or an FTP
+server).</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">delay_upload</span></code></dt>
+<dd>If set, the photos will be uploaded at once at 4am. If not, the upload is
+done as soon as the photo are fetched.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">delete</span></code></dt>
+<dd>When doing a delayed upload, shall the photo be removed from the camera?</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">delete_fast</span></code></dt>
+<dd>Shall the photo be removed from the camera as soon as they are fetched on
+the <em>PhotoMiroir</em>?</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">slideshow</span></code></dt>
+<dd>Shall an HTML slideshow be generated locally (see <a class="reference internal" href="usage.html#slideshow"><span class="std std-numref">Section 4.4</span></a>)?</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">reduce</span></code></dt>
+<dd>If set, the photo size is reduced to 2028×1365 as soon as they are
+collected from the camera.</dd>
+</dl>
+<p>Do not forget to click on the <span class="guilabel">OK</span> button to validate the changes.</p>
+</div>
+<div class="section" id="flickr-configuration">
+<span id="flickrconf"></span><h3>3.1.2. Flickr Configuration<a class="headerlink" href="#flickr-configuration" title="Permalink to this headline">¶</a></h3>
+<p>On the configuration page (see <a class="reference internal" href="installation.html#adminpage"><span class="std std-numref">Fig. 2.1</span></a>), click on the <em>Flickr
+Configuration</em> link ❷.</p>
+<p>The following parameters are then adjustables:</p>
+<div class="figure align-center" id="id2">
+<span id="changeflickr"></span><img alt="Change flickr parameters" src="/images/pages/flickr-params.png" />
+<p class="caption"><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Change flickr parameters</span></p>
+</div>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">flickr_api_key</span></code></dt>
+<dd>The API key of your flickr account. See
+<a class="reference external" href="https://www.flickr.com/services/api/misc.api_keys.html">https://www.flickr.com/services/api/misc.api_keys.html</a> for more details on
+how to get the API key.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">flickr_secret_key</span></code></dt>
+<dd>The secret key provided by Flickr which would allow the <em>PhotoMiroir</em> to
+post the photos.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">public_visible</span></code></dt>
+<dd>If set, the photo published to flickr are made visible to the public.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">friend_visible</span></code></dt>
+<dd>If set, the photo published to flickr are made visible to your friends.</dd>
+</dl>
+<p>Do not forget to click on the <span class="guilabel">OK</span> button to validate the changes.</p>
+</div>
+<div class="section" id="ftp-configuration">
+<span id="ftpconf"></span><h3>3.1.3. FTP Configuration<a class="headerlink" href="#ftp-configuration" title="Permalink to this headline">¶</a></h3>
+<p>On the configuration page (see <a class="reference internal" href="installation.html#adminpage"><span class="std std-numref">Fig. 2.1</span></a>), click on the <em>FTP
+Configuration</em> link ❸.</p>
+<p>The following parameters are then adjustable:</p>
+<div class="figure align-center" id="id3">
+<span id="changeftp"></span><img alt="Change ftp parameters" src="/images/pages/ftp-params.png" />
+<p class="caption"><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Change ftp parameters</span></p>
+</div>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">ftp_host</span></code></dt>
+<dd>FTP server address (for example : <code class="docutils literal notranslate"><span class="pre">ftp.example.com</span></code>).</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ftp_port</span></code></dt>
+<dd>FTP server port (usually <code class="docutils literal notranslate"><span class="pre">20</span></code>).</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ftp_user</span></code></dt>
+<dd>FTP login name.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ftp_password</span></code></dt>
+<dd>FTP login password.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ftp_dir</span></code></dt>
+<dd>Remote FTP directory server in which the photos will be uploaded.</dd>
+</dl>
+<p>You can test that the inputed parameters enable a successful connexion by clicking
+on the <span class="guilabel">test connexion</span> button.
+Do not forget to click on the <span class="guilabel">OK</span> button to validate the changes.</p>
+</div>
+<div class="section" id="manual-photo-deletion">
+<h3>3.1.4. Manual Photo Deletion<a class="headerlink" href="#manual-photo-deletion" title="Permalink to this headline">¶</a></h3>
+<p>On the configuration page (see <a class="reference internal" href="installation.html#adminpage"><span class="std std-numref">Fig. 2.1</span></a>), click on the <em>Manual
+Photo Deletion</em> link ❺.</p>
+<p>You can then select the photos and photo gallery you want to remove.</p>
+<p>You can also force the deletion of all photos on the camera.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When you click on the <span class="guilabel">Delete</span> button, all photos are removed
+without further asking.</p>
+</div>
+</div>
+<div class="section" id="note-on-parameter-expansion">
+<span id="paramexpansion"></span><h3>3.1.5. Note on Parameter Expansion<a class="headerlink" href="#note-on-parameter-expansion" title="Permalink to this headline">¶</a></h3>
+<p>Some string parameters may contain a special notation like <code class="docutils literal notranslate"><span class="pre">{param_name}</span></code>
+which says that the text between the curly_braces (included) is replaced by
+the content of the parameter referenced.</p>
+<p>For example if <code class="docutils literal notranslate"><span class="pre">event</span></code> is set to <code class="docutils literal notranslate"><span class="pre">May</span> <span class="pre">Party</span></code>, and <code class="docutils literal notranslate"><span class="pre">tags</span></code> contains <code class="docutils literal notranslate"><span class="pre">photomirror</span>
+<span class="pre">&quot;{event}&quot;</span></code>, then upon invocation, <code class="docutils literal notranslate"><span class="pre">tags</span></code> will be replaced with: <code class="docutils literal notranslate"><span class="pre">photomirror</span>
+<span class="pre">&quot;May</span> <span class="pre">Party&quot;</span></code>.</p>
+<p>Moreover, there is a special <code class="docutils literal notranslate"><span class="pre">date</span></code> implicit parameter that may be
+referenced. For example, if <code class="docutils literal notranslate"><span class="pre">event</span></code> is set to <code class="docutils literal notranslate"><span class="pre">{date:%b</span> <span class="pre">%d</span> <span class="pre">%Y}</span> <span class="pre">Party</span></code> will
+expand on the 28 of February to: <code class="docutils literal notranslate"><span class="pre">Feb</span> <span class="pre">28</span> <span class="pre">2018</span> <span class="pre">Party</span></code>. See
+<a class="reference internal" href="appendix.html#dateformat"><span class="std std-numref">Section 5.1</span></a> for the available date formatting codes.</p>
+<p>Only the following parameters are subject to parameter expansion.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">event</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">desc</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">tags</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">exif_comment</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">watermark_text</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="general-admin">
+<h2>3.2. General Admin<a class="headerlink" href="#general-admin" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="add-or-delete-users">
+<h3>3.2.1. Add or Delete Users<a class="headerlink" href="#add-or-delete-users" title="Permalink to this headline">¶</a></h3>
+<p>By clicking on the <em>user admin</em> link on the top right corner, you can access
+the user management interface  if you have sufficient privileges:</p>
+<div class="figure align-center" id="id4">
+<span id="adminlink"></span><img alt="Access to user admin UI" src="/images/pages/adminlink.png" />
+<p class="caption"><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Access to user admin UI</span></p>
+</div>
+</div>
+<div class="section" id="system-and-network-configuration">
+<span id="systemconf"></span><h3>3.2.2. System and Network Configuration<a class="headerlink" href="#system-and-network-configuration" title="Permalink to this headline">¶</a></h3>
+<p>On the configuration page (see <a class="reference internal" href="installation.html#adminpage"><span class="std std-numref">Fig. 2.1</span></a>), click on the <em>System and
+Network Configuration</em> link ❹.</p>
+<p>The following parameters are then adjustables:</p>
+<div class="figure align-center" id="id5">
+<span id="changesystem"></span><img alt="Change system parameters" src="/images/pages/system-params.png" />
+<p class="caption"><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Change system parameters</span></p>
+</div>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">ssid</span></code></dt>
+<dd>Name of the wifi network on which the photo albums are browsable if
+<code class="docutils literal notranslate"><span class="pre">gallery</span></code> is set (see <a class="reference internal" href="#eventadmin"><span class="std std-numref">Section 3.1.1</span></a>).</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">wifi_pass</span></code></dt>
+<dd>Password for the aforementioned wifi network. Left blank to allow people to
+connect without password.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">host_ssid</span></code></dt>
+<dd>Name of your local wifi network on which the <em>PhotoMiroir</em> may connect to
+the internet. This internet access would allow to update itself to the last
+firmware version and to upload photo to Flickr or FTP if configured to do
+so. It would also allows you to access the photos and the administration
+interface from your local network. See <a class="reference internal" href="installation.html#wifisetup"><span class="std std-numref">Section 2.2</span></a> for more on
+setting up the wifi access.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">host_wifi_pass</span></code></dt>
+<dd>Password of the aforementioned wifi network.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">delay</span></code></dt>
+<dd>The number of seconds for the <em>PhotoMiroir</em> to wait before trying to
+download photo from the camera.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">verbose</span></code></dt>
+<dd>Verbosity level, useful for debugging purposes only.</dd>
+</dl>
+<p>Do not forget to click on the <span class="guilabel">OK</span> button to validate the changes.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/logo.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">PhotoMiroir</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">A simple and nice photo booth</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="features.html">1. Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Preliminary Setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#event-admin">3.1. Event Admin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#event-parameters">3.1.1. Event Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flickr-configuration">3.1.2. Flickr Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ftp-configuration">3.1.3. FTP Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-photo-deletion">3.1.4. Manual Photo Deletion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#note-on-parameter-expansion">3.1.5. Note on Parameter Expansion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#general-admin">3.2. General Admin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-or-delete-users">3.2.1. Add or Delete Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-and-network-configuration">3.2.2. System and Network Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">4. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">5. Appendix</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">2. Preliminary Setup</a></li>
+      <li>Next: <a href="usage.html" title="next chapter">4. Usage</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Antipodae.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/configuration.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

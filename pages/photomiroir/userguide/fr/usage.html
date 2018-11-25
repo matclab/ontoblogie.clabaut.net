@@ -1,0 +1,179 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>4. Utilisation &#8212; Documentation PhotoMiroir </title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="5. Annexe" href="appendix.html" />
+    <link rel="prev" title="3. Configuration" href="configuration.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="usage">
+<h1>4. Utilisation<a class="headerlink" href="#usage" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="upload-photos-to-a-remote-location">
+<h2>4.1. Télécharger les photos sur un serveur distant<a class="headerlink" href="#upload-photos-to-a-remote-location" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Depuis la version 1.0, le <em>PhotoMiroir</em> vous permet de télécharger les photos sur un <em>compte Flickr</em> ou sur un <em>serveur FTP</em>. Voir  <a class="reference internal" href="configuration.html#flickrconf"><span class="std std-numref">Section 3.1.2</span></a> et <a class="reference internal" href="configuration.html#ftpconf"><span class="std std-numref">Section 3.1.3</span></a> pour la configuration associée.</p>
+<p>Le téléchargement n’est effectué que si le paramètre <code class="docutils literal notranslate"><span class="pre">upload</span></code> est positionné (voir <a class="reference internal" href="configuration.html#eventadmin"><span class="std std-numref">Section 3.1.1</span></a>).</p>
+<p>Les photos ne sont téléchargées qu’une seule fois. Si <em>Flickr</em> et <em>serveur FTP</em> sont configurés alors les photos ne seront téléchargées que sur <em>Flickr</em>.</p>
+<p>Vous pouvez choisir de télécharger les photos au fur et à mesure qu’elles sont récupérées de l’appareil photo, ou bien en une seule fois à 4 heure du matin (quand <code class="docutils literal notranslate"><span class="pre">delay_upload</span></code> est positionné).</p>
+</div>
+<div class="section" id="accessing-the-gallery-from-one-s-smartphone">
+<h2>4.2. Regarder les photos depuis son smartphone<a class="headerlink" href="#accessing-the-gallery-from-one-s-smartphone" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Si le paramètre <code class="docutils literal notranslate"><span class="pre">ssid</span></code> est positionné (voir <a class="reference internal" href="configuration.html#systemconf"><span class="std std-numref">Section 3.2.2</span></a>), alors le <em>PhotoMiroir</em> crée un point d’accès wifi qui permet aux personnes à proximité de s’y connecter et de parcourir les photos dès qu’elles sont récupérées. Soyez sûr de positionner également le paramètre <code class="docutils literal notranslate"><span class="pre">gallery</span></code> pour permettre cette fonctionnalité (voir <a class="reference internal" href="configuration.html#eventadmin"><span class="std std-numref">Section 3.1.1</span></a>).</p>
+<p>Sur la plupart des smartphones, une fois que le point d’accès wifi du <em>PhotoMiroir</em> est sélectionné, l’utilisateur est redirigé vers la galerie photo. Si cela ne fonctionne pas automatiquement, l’utilisateur peut toujours ouvrir un navigateur web à l’adresse <a class="reference external" href="http://photomiroir.fr">http://photomiroir.fr</a> pour accéder à la galerie photo (cela ne fonctionne que lorsque le téléphone est connecté au wifi du <em>PhotoMiroir</em>).</p>
+</div>
+<div class="section" id="accessing-the-images-from-another-pc">
+<h2>4.3. Récupérer les images depuis un autre PC<a class="headerlink" href="#accessing-the-images-from-another-pc" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="from-a-web-navigator">
+<h3>4.3.1. Depuis un navigateur web<a class="headerlink" href="#from-a-web-navigator" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Vous pouvez parcourir la galerie photo en ouvrant le lien <a class="reference external" href="http://192.168.0.44">http://192.168.0.44</a> (après avoir remplacé 192.168.0.44 par l’adresse IP locale de votre <em>PhotoMiroir</em> comme expliqué en <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
+</div>
+<div class="section" id="with-the-file-explorer">
+<span id="fileexplorer"></span><h3>4.3.2. Avec l’explorateur de fichiers<a class="headerlink" href="#with-the-file-explorer" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="section" id="from-a-windows-computer">
+<h4>4.3.2.1. Depuis un ordinateur sous Windows<a class="headerlink" href="#from-a-windows-computer" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Vous pouvez parcourir les photos depuis un ordinateur sous windows en parcourant <code class="docutils literal notranslate"><span class="pre">\\192.168.0.44\Photo_Miroir</span></code> avec l’explorateur windows (après avoir remplacé 192.168.0.44 par l’adresse IP locale de votre <em>PhotoMiroir</em> comme expliqué en <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
+</div>
+<div class="section" id="from-a-linux-computer">
+<h4>4.3.2.2. Depuis un ordinateur sous linux<a class="headerlink" href="#from-a-linux-computer" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Vous pouvez parcourir le répertoire des photos depuis votre explorateur de fichier sous linux en allant sur <code class="docutils literal notranslate"><span class="pre">smb://192.168.0.44/Photo_Miroir</span></code> (après avoir remplacé 192.168.0.44 par l’adresse IP locale de votre <em>PhotoMiroir</em> comme expliqué en <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
+</div>
+<div class="section" id="from-a-mac-computer">
+<h4>4.3.2.3. Depuis un ordinateur sous MacOS<a class="headerlink" href="#from-a-mac-computer" title="Lien permanent vers ce titre">¶</a></h4>
+<p><strong>TODO</strong></p>
+</div>
+</div>
+</div>
+<div class="section" id="display-a-slideshow">
+<span id="slideshow"></span><h2>4.4. Afficher un diaporama<a class="headerlink" href="#display-a-slideshow" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="id1">
+<h3>4.4.1. Depuis un navigateur web<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Le <em>PhotoMiroir</em> offre un diaporama natif si l’option <code class="docutils literal notranslate"><span class="pre">slideshow</span></code> est positionnée (voir <a class="reference internal" href="configuration.html#eventadmin"><span class="std std-numref">Section 3.1.1</span></a>). Le diaporama affiche toutes les photos de manière aléatoire, et insère les nouvelles photos dès que possible.</p>
+<p>Vous pouvez accéder au diaporama en navigant à l’adresse <a class="reference external" href="http://192.168.0.44/slideshow">http://192.168.0.44/slideshow</a>  (après avoir remplacé 192.168.0.44 par l’adresse IP locale de votre <em>PhotoMiroir</em> comme expliqué en <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
+<p>Une nouvelle photo est affichée toute les 8 secondes. Vous pouvez choisir un délai de <em>n</em> secondes an ajoutant <code class="docutils literal notranslate"><span class="pre">?d=n</span></code> à l’URL. Par exemple&nbsp;:<a class="reference external" href="http://192.168.0.44/slideshow?d=5">http://192.168.0.44/slideshow?d=5</a> sélectionnera un délai entre deux photos de 5 secondes.</p>
+</div>
+<div class="section" id="with-a-native-application">
+<h3>4.4.2. Avec une application native<a class="headerlink" href="#with-a-native-application" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Vous pouvez aussi utiliser un logiciel de diaporama natif sur votre ordinateur en le configurant pour accéder aux fichier sur le partage réseau du <em>PhotoMiroir</em>, comme expliqué en <a class="reference internal" href="#fileexplorer"><span class="std std-numref">Section 4.3.2</span></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/logo.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">PhotoMiroir</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">A simple and nice photo booth</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Table des matières&nbsp;:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="features.html">1. Fonctionnalités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Configuration préliminaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">3. Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Utilisation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#upload-photos-to-a-remote-location">4.1. Télécharger les photos sur un serveur distant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-the-gallery-from-one-s-smartphone">4.2. Regarder les photos depuis son smartphone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-the-images-from-another-pc">4.3. Récupérer les images depuis un autre PC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#from-a-web-navigator">4.3.1. Depuis un navigateur web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#with-the-file-explorer">4.3.2. Avec l’explorateur de fichiers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#display-a-slideshow">4.4. Afficher un diaporama</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.4.1. Depuis un navigateur web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#with-a-native-application">4.4.2. Avec une application native</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">5. Annexe</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="configuration.html" title="Chapitre précédent">3. Configuration</a></li>
+      <li>Next: <a href="appendix.html" title="Chapitre suivant">5. Annexe</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Antipodae.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

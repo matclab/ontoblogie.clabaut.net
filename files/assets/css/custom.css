@@ -1,14 +1,35 @@
-
-body {
-   font-size:16px;
-   font-family: 'Raleway', sans-serif !important;
-}
 h1, h2, h3, h4  {
    /*font-family: 'Sanchez', serif;*/
+   font-family: 'Raleway', sans-serif !important;
    font-weight:100;
 }
 footer {
    font-weight:200;
+}
+
+.bootblog4-brand {
+   text-align:left;
+}
+
+body {
+   font-family: 'Raleway', sans-serif !important;
+   font-weight:400;
+}
+
+.help-block {
+   color:rgb(115, 115, 115);
+}
+div.align-center {
+   text-align:center;
+}
+.col-form-label {
+   text-align:right;
+   font-weight:700;
+}
+
+
+.liberapay-btn {
+   margin-top:20px;
 }
    
 p.caption {
@@ -22,7 +43,8 @@ img.thumbnail.img-responsive {
 }
 #blog-title {
    font-weight:700;
-   font-size:36px;
+   font-size:60px;
+   font-family: 'Raleway', sans-serif !important;
    color:#FFF;
 }
 h1 {font-weight:700;}
@@ -43,6 +65,12 @@ p, li {text-align:justify;
 }
 
 
+legend{
+   border-bottom-style:solid;
+   border-bottom-width:1px;
+   border-bottom-color:#e5e5e5;
+   margin-top:2em;
+}
 .lead{
    font-weight:200;
 }
@@ -138,8 +166,8 @@ p.quote-en::after {
    right:0;
 }
 
-#bs-navbar, nav.navbar {
-    background-color: #009688;
+.bootblog4-right-nav, .bootblog4-right-nav>nav,  .nbb-header {
+    background-color: #009688 !important;
     border: 0px;
     color:#FFF;
 }
@@ -154,14 +182,14 @@ h2 {
 h3 { font-size:180%; font-style:italic;}
 h4 { font-size:150%; }
 
-#bs-navbar ul li a {
-    color:#FFF;
+.navbar ul li a {
+    color:#FFF !important;
     text-decoration: none;
     display: block;
     outline: 0;
-    text-align: right;
+    /*text-align: right;
     margin-right: 1em;
-    padding: 20px 0px 0px 0px;
+    padding: 20px 0px 0px 0px; */
     font-weight:400;
 }
 /* add indicator for external link */
@@ -209,24 +237,15 @@ a:hover, a:focus {
    background-color:#009688 !important;
 }
 
-.pull-right {
+.float-right {
    margin-left: 1em;
 }
 
-/* Header permalinks */
-h1:hover .headerlink, h2:hover .headerlink,
-h3:hover .headerlink, h4:hover .headerlink,
-h5:hover .headerlink, h6:hover .headerlink {
-    display: inline;
+/* Hide secondary superfluous hyperlink */
+.headerlink + .headerlink {
+   display:none;
 }
 
-.headerlink {
-    display: none;
-    color: #ccc !important;
-    margin-left: 0.2em;
-    padding: 0 0.2em;
-    font-weight:100;
-}
 
 .headerlink:hover {
     opacity: 1;
@@ -235,6 +254,41 @@ h5:hover .headerlink, h6:hover .headerlink {
     text-decoration: none;
     font-weight:100;
 }
+
+.headerlink {
+   opacity:0;
+    color: #ccc !important;
+    margin-left: 0.2em;
+    padding: 0 0.2em;
+    font-weight:100;
+}
+
+/* Move sphinxsidebar on top of article content */
+.document {
+   display:flex;
+   flex-direction:column;
+}
+.documentwrapper{
+   order:2;
+}
+.sphinxsidebar{
+   order:1;
+}
+/* restyle table of content */
+.sphinxsidebarwrapper > .current{
+   font-size:90%;
+}
+/* hide unwなnted content from sphinx doc*/
+p.logo, h1.logo, p.blurb, h3#navigation, div.relations, div.footer {
+   display: none;
+
+/* Header permalinks */
+h1:hover .headerlink, h2:hover .headerlink,
+h3:hover .headerlink, h4:hover .headerlink,
+h5:hover .headerlink, h6:hover .headerlink {
+    display: inline;
+}
+
 
 
 @media(max-width:767px){}

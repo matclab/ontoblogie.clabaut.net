@@ -34,7 +34,7 @@ Fonctionnement
 ==============
 
 .. image:: /images/logolostre.svg
-     :class: "pull-right"
+     :class: "float-right"
      :width: 200px
      :alt: logo de rendre.fr
 
@@ -75,7 +75,7 @@ Organisation
 ============
 
 .. image:: /images/logoantipodae.png
-     :class: "pull-right"
+     :class: "float-right"
      :width: 200px
      :alt: logo de antipodae.fr
 

@@ -2,13 +2,15 @@
 <%namespace name="helper" file="post_helper.tmpl"/>
 <%namespace name="pheader" file="post_header.tmpl"/>
 <%namespace name="comments" file="comments_helper.tmpl"/>
+<%namespace name="math" file="math_helper.tmpl"/>
+<%namespace name="ui" file="ui_helper.tmpl"/>
 <%inherit file="base.tmpl"/>
 
 <%block name="extra_head">
     ${parent.extra_head()}
      <link href="/assets/css/sharrre.css" rel="stylesheet" type="text/css">
     % if post.meta('keywords'):
-    <meta name="keywords" content="${post.meta('keywords')|h}">
+    <meta name="keywords" content="${smartjoin(', ', post.meta('keywords'))|h}">
     % endif
     %if post.description():
     <meta name="description" itemprop="description" content="${post.description()|h}">
@@ -26,6 +28,7 @@
     ${helper.open_graph_metadata(post)}
     ${helper.twitter_card_information(post)}
     ${helper.meta_translations(post)}
+    ${math.math_styles_ifpost(post)}
 </%block>
 
 <%block name="content">
@@ -64,24 +67,24 @@
             <legend>Leave a comment</legend>
 
             <!-- Text input-->
-            <div class="form-group">
+            <div class="form-group row">
             <input type="hidden" name="options[slug]" value="${post.meta('slug')}">
-            <label class="col-md-4 control-label" for="commentName">Name</label>
+            <label class="col-md-4 col-form-label" for="commentName">Name</label>
             <div class="col-md-6">
             <input id="commentName" name="fields[name]" type="text" placeholder="John Doe" class="form-control input-md" required="">
             <span class="help-block">The name you want to show others</span>
             </div>
             </div>
-            <div class="form-group">
-            <label class="col-md-4 control-label" for="emailText">Email</label>
+            <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="emailText">Email</label>
             <div class="col-md-6">
                 <input class="form-control" id="emailText" name="fields[email]" type="text" placeholder="John.Doe@example.com" class="form-control input-md" required></input>
             </div>
             </div>
 
             <!-- Textarea -->
-            <div class="form-group">
-            <label class="col-md-4 control-label" for="commentText">Comment</label>
+            <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="commentText">Comment</label>
             <div class="col-md-6">
                 <textarea class="form-control" id="commentText"
 		name="fields[message]" required></textarea>
@@ -89,8 +92,8 @@
             </div>
 
             <!-- Button -->
-            <div class="form-group">
-            <label class="col-md-4 control-label" for="submit"></label>
+            <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="submit"></label>
             <div class="col-md-4">
                 <button id="commentSubmit" class="btn btn-primary" name="submit" class="btn btn-success">Submit</button>
             </div>
@@ -114,16 +117,14 @@
             % endfor
 
         </section>
-% endif
-    ${helper.mathjax_script(post)}
+    % endif
+    ${math.math_scripts_ifpost(post)}
 </article>
 ${comments.comment_link_script()}
 </%block>
 
 <%block name="sourcelink">
 % if show_sourcelink:
-    <li>
-    <a href="${post.source_link()}" id="sourcelink">${messages("Source")}</a>
-    </li>
+    ${ui.show_sourcelink(post.source_link())}
 % endif
 </%block>

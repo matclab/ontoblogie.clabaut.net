@@ -1,0 +1,110 @@
+.. title: Des pailles sans plastique !
+.. slug: des-pailles-sans-plastique
+.. date: 2018-09-11 11:36:13 UTC+02:00
+.. tags: vert,fr
+.. category: 
+.. link: 
+.. description: Comment remplacer les pailles en plastique.
+.. type: text
+
+.. figure:: /images/pailles/verre1paille.jpg
+     :alt: Une paille dans un verre
+     :class: "thumbnail img-responsive"
+     :width: 200px
+     :align: center
+     :target: /images/pailles/verre1paille.jpg
+
+     Ça coûte une paille !
+
+.. class:: ad
+  
+    On le sait, on le répète : « le plastique c'est une plaie pour la 
+    planète ! » Les pailles sont un exemple de produit manufacturé jetable qui 
+    a envahi nos sociétés. Vous le savez sans doute si vous avez des enfants 
+    qui pour la plupart raffolent de cet accessoire.
+
+.. TEASER_END
+
+
+
+Vous trouverez de nombreuses vidéos illustrant la pollution engendrée par les 
+pailles, et celle-ci est assez bien faite, car elle raconte aussi l'histoire 
+de la paille. Comment en est-on arrivé à faire des pailles plastiques :
+
+.. youtube:: NhhLIu2EMl4
+    :align: center
+
+.. class:: ad
+
+   Par une étrange dissociation de sens, le mot paille a au cours du temps 
+   acquis un nouveau sens. Désignant initialement une tige de graminée 
+   dépouillée de son grain, c'est aussi devenu le *chalumeau* utilisé pour 
+   aspirer une boisson.
+
+La dissociation des deux sens est telle que mes enfants ont eu une sorte 
+d'épiphanie en réalisant que les pailles s'appelaient « paille » parcequ'on 
+utilisait des pailles comme paille autrefois (c'est clair ?).
+
+.. class:: ad
+
+   Bref, fort de ce constat, nous sommes allez explorer notre environnement 
+   pour voir ce que l'on pouvait trouver comme paille. Au pied des vignes 
+   voisines, on trouve ceci :
+
+.. figure:: /images/pailles/nature.jpg
+     :alt: Une paille dans son milieu naturel
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :align: center
+     :target: /images/pailles/nature.jpg
+
+     Des pailles en liberté.
+
+Une fois cueillies, délicatement sectionnées aux extrémités avec un sécateur 
+et dépouillées de leur tristes enveloppes externes, ça donne ce genre de 
+récolte :
+
+.. figure:: /images/pailles/étallées.jpg
+     :alt: La récolte du jour
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :align: center
+     :target: /images/pailles/étallées.jpg
+
+     La récolte du jour.
+
+.. figure:: /images/pailles/verreproche.jpg
+     :alt: La récolte de paille dans un verre
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :align: center
+     :target: /images/pailles/verreproche.jpg
+
+     La récolte du jour, vue de plus près.
+
+
+.. class:: ad
+
+   À l'usage, le « goût d'herbe » évoqué dans la vidéo n'est pas perceptible 
+   (au moins pour des liquides froids), et ces pailles naturelles et 
+   réutilisables ont remplacé les pailles plastiques à la maison. Après usage, 
+   on les rince et on les laisse sêcher. On les met au composte quand elles 
+   sont cassées ou trop abimées pour que l'aspiration soit efficace.
+   
+.. figure:: /images/pailles/verreloin.jpg
+     :alt: Prêt pour l'hiver.
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :target: /images/pailles/verreloin.jpg
+
+     Prêt pour l'hiver.
+
+
+.. figure:: /images/pailles/verre1pailledessus.jpg
+     :alt: Une paille dans un verre
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :target: /images/pailles/verre1pailledessus.jpg
+
+     Une paille, un verre…
+

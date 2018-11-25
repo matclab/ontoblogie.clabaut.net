@@ -17,7 +17,7 @@ au second tour un candidat que moins de 18% des votants veulent voir élu ?
 .. TEASER_END
 
 .. image:: /images/condorcet_essai.jpg
-     :class: "pull-right"
+     :class: "float-right"
      :width: 300px
      :alt: Condorcet - essai sur l'application de l'analyse à la probabilité
            des décisions rendues à la pluralité des voix.

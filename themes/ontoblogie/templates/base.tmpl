@@ -23,61 +23,70 @@ ${template_hooks['extra_head']()}
 <body>
 <a href="#content" class="sr-only sr-only-focusable">${messages("Skip to main content")}</a>
 
-<!-- Menubar -->
-
-<nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container"><!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">${messages("Toggle navigation")}</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+<!-- Header and menu bar -->
+<div class="container">
+      <header class="blog-header py-3">
+        <div class="row nbb-header align-items-center">
+          <div class="col-md-3 col-xs-2 col-sm-2 order-6" style="width: auto;">
+            <button class="navbar-toggler navbar-light bg-light nbb-navbar-toggler" type="button" data-toggle="collapse" data-target=".bs-nav-collapsible" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="${abs_link(_link("root", None, lang))}">
+            <div class="collapse bs-nav-collapsible bootblog4-search-form-holder">
+                ${search_form}
+            </div>
+        </div>
+          <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand order-1" style="width: auto;">
+            <a class="navbar-brand blog-header-logo text-dark" href="${abs_link(_link("root", None, lang))}">
             %if logo_url:
-                <img src="${logo_url}" alt="${blog_title|h}" id="logo">
+            <img src="${logo_url}" alt="${blog_title|h}" id="logo" class="d-inline-block align-top">
             %endif
 
             % if show_blog_title:
                 <span id="blog-title">${blog_title|h}</span>
             % endif
             </a>
-        </div><!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
-            <ul class="nav navbar-nav">
-                ${base.html_navigation_links()}
-                ${template_hooks['menu']()}
-            </ul>
-            %if search_form:
-                ${search_form}
-            %endif
-
-            <ul class="nav navbar-nav navbar-right">
+          </div>
+	  <div class="col-md-3 justify-content-end align-items-center
+	  bs-nav-collapsible collapse flex-collapse bootblog4-right-nav
+	  order-12">
+            <nav class="navbar navbar-light bg-white">
+            <ul class="navbar-nav bootblog4-right-nav">
+                    ${base.html_navigation_links_entries(navigation_alt_links)}
                 <%block name="belowtitle">
                 %if len(translations) > 1:
-                    <li>${base.html_translations()}</li>
+                        ${base.html_translations()}
                 %endif
                 </%block>
-                % if show_sourcelink:
                     <%block name="sourcelink"></%block>
-                %endif
                 ${template_hooks['menu_alt']()}
+            </ul></nav>
+            </div>
+    </div>
+</header>
+
+<nav class="navbar navbar-expand-md navbar-light bg-white static-top">
+        <div class="collapse navbar-collapse bs-nav-collapsible" id="bs-navbar">
+            <ul class="navbar-nav nav-fill d-flex w-100">
+                ${base.html_navigation_links_entries(navigation_links)}
+                ${template_hooks['menu']()}
             </ul>
         </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
 </nav>
-
-<!-- End of Menubar -->
+<%block name="before_content"></%block>
+</div>
 
 <div class="container" id="content" role="main">
     <div class="body-content">
+        % if theme_config.get('sidebar'):
+            <div class="row"><div class="col-md-8 blog-main">
+        % endif
         <!--Body content-->
-        <div class="row">
             ${template_hooks['page_header']()}
             <%block name="content"></%block>
-        </div>
         <!--End of body content-->
+        % if theme_config.get('sidebar'):
+        </div><aside class="col-md-4 blog-sidebar">${theme_config.get('sidebar')}</aside></div>
+        % endif
 
         <footer id="footer">
             ${content_footer}
@@ -117,11 +126,13 @@ ${base.late_load_js()}
     </script>
     <!-- end fancy dates -->
     <%block name="extra_js"></%block>
-    % if annotations and post and not post.meta('noannotations'):
-        ${notes.code()}
-    % elif not annotations and post and post.meta('annotations'):
-        ${notes.code()}
-    % endif
+    <script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
 ${body_end}
 ${template_hooks['body_end']()}
 </body>

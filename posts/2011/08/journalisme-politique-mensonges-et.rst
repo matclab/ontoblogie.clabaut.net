@@ -8,7 +8,7 @@
     politiques, mais ils les répètent ! C’est pire ! » — Coluche*
 
 .. image:: /images/mensonge.jpg
-     :class: "pull-right"
+     :class: "float-right"
      :width: 200px
      :alt: *©sauvageonne, cc-by_nc-nd* 
      :target: http://www.flickr.com/photos/45169745@N00/427200046/sizes/s/in/photostream/
