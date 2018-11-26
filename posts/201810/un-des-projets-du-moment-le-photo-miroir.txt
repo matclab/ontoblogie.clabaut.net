@@ -12,9 +12,6 @@
      :width: 200px
      :alt: Photo prise par le photo-miroir de La Scène
 
-.. class:: ad
-
-
 
 .. class:: ad
 
@@ -152,7 +149,7 @@ Et ensuite ?
 ============
 
 Un certains nombre d'améliorations ou de nouvelles fonctionnalités sont
-prévues. Il est possible que je passe le logiciel en open-source afin d'en
+prévues. Je me pose aussi la question de passer le logiciel en open-source afin d'en
 faire profiter d'autres personnes. 
 
 Affaire à suivre…

@@ -1,0 +1,156 @@
+.. title: Another side project : the photo-mirror
+.. slug: photo-mirror
+.. date: 2018-10-28 17:54:22 UTC+01:00
+.. tags: en,computer,raspberry
+.. category: 
+.. link: 
+.. description: The Photo-Mirror, a low-tech photo booth.
+.. type: text
+
+.. image:: /images/photomiroir/photomiroir-alice.png
+     :class: "float-right"
+     :width: 200px
+     :alt: Photo taken by a photo-mirror at La Scène
+
+.. class:: ad
+
+    Axel, a long-time friend, changed his professional orientation a few years
+    ago to launch "`La Scène <https://www.lascene-aix.com/>`_" in
+    Aix-en-Provence. It is a family friendly place where you can spend a
+    moment after work during the week, over a drink and some tapas. There are
+    concerts, theatrical improvisations and much more, as La Scène is intended
+    to be a place for artistic events and much more.
+
+.. TEASER_END
+
+Background
+==========
+
+With one of his acquaintances who happened to be a photographer, Axel has
+integrated a photographic mirror, *low-tech* descendant of the "photo booths"
+that you have certainly used during a wedding or another festive event.
+
+
+.. class:: ad
+
+    The main idea is to allow people to take pictures of themselves in the
+    evening, but in the eclectic, retro-grandmother and resolutely *low-tech*
+    style from La Scène. Thus  a solution without a electronic display,
+    without diodes, without lights and without coloured plastics has been
+    designed.  The integration carried out at La Scène is particularly
+    successful. The camera is setup behind a large mirror in a frame with
+    golden mouldings, the tain of which has been removed in the middle in
+    order to allow the camera to see through it.
+
+
+.. figure:: /images/photomiroir/photomiroir1.jpg
+     :class: "thumbnail img-responsive"
+     :width: 500px
+     :align: center
+     :alt: Integration of the photo-mirror in La Scène
+     :target: /images/photomiroir/photomiroir1.jpg
+
+     Integration of the photo-mirror in La Scène
+
+The camera is a Nikon 3100, equipped with an 18-55mm lens and an
+external flash.
+
+A button at the end of a cable allows customers to trigger the
+camera. the whole things produces this kind of professional quality photo:
+
+.. figure:: /images/photomiroir/photomiroir-alice.png
+     :class: "thumbnail img-responsive"
+     :width: 500px
+     :align: center
+     :alt: Photos taken by the "Alice" photo-mirror at La Scène
+     :target: /images/photomiroir/photomiroir-alice.png
+
+     Photos taken by the "Alice" photo-mirror at La Scène
+
+However, a number of additionnal features were expected for such an environment:    
+
+- allow to retrieve the photos in order to project them on a giant screen
+  in the main room (web slideshow provided),
+- allow customers to view the photos on their smartphone,
+- upload the photos to flickr or to an FTP site to make them 
+  available to the public the day after,
+- add a text and/or graphic watermark to each photo.
+
+.. figure:: /images/photomiroir/photomiroir2.jpg
+     :class: "thumbnail img-responsive"
+     :width: 500px
+     :align: center
+     :alt: Integration of the photo-mirror at La Scène
+     :target: /images/photomiroir/photomiroir2.jpg
+
+     Integration of the photo-mirror at La Scène. The white circle above the mirror
+     is the flash.
+
+Upon Axel's request, I developed a small box based on a *Raspberry Pi* that
+connects to the camera via an USB cable and to the local wifi in order to provide
+these features.  If you want to get a more precise idea, the `user
+documentation is visible here </pages/photomiroir/userguide/en/>`_.
+
+
+Technical Side
+===============
+
+The chosen *Raspberry Pi* is a 3B+ model which has the particularity of having
+an integrated wifi. The wifi is configured to access the LAN and to provide a
+a captive portal allowing customers to access photos from their own
+smartphone. The OS is  *Arch linux*, configured to use the repository
+`http://tardis.tiny-vps.com/aarm/ <http://tardis.tiny-vps.com/aarm/>`_ in
+order to be able to obtain a known and tested configuration.
+
+The software (photo manager and web interface) is written in python 3.7.
+
+The other software used are:
+
+- *gphoto2* (and its python binding) to retrieve the photos,
+- *dnsmasq* + *hostapd* + *iptables* + *ngninx* for the captive portal,
+- *sphinx* for documentation. *Robotframework* coupled with
+  *selenium* are used to automatically extract screenshots from the
+  configuration web application,
+- `sigal <http://sigal.saimon.org/en/latest/>`_ to generate the photo gallery,
+- *py.test* for testing,
+- *bottle* for the web server of the configuration and administration applicatio,
+- `diaporama <https://github.com/gre/diaporama>`_ as a javascript library
+  for the animation of the slideshow (images are sent on demand from
+  the server via websockets)
+- *grafana*, *prometheus* and *prometheus push gateway* for monitoring,
+- *tor* to provide ssh access for maintenance and troubleshooting (at least on the
+  test version of La Scène),
+
+Photos
+======
+
+Here after is a random sample of the photos taken at La Scène:
+
+.. raw:: html
+
+    <style type="text/css"> 
+    .flickr_badge_image {margin:0px;display:inline;}
+    .flickr_badge_image img {border: 1px solid #666666 !important; padding:1px; margin:2px;}
+    #flickr_badge_wrapper {width:420px;text-align:left}
+    </style>
+    <center><div id="flickr_badge_wrapper"></center>
+    <script type="text/javascript"
+    src="https://www.flickr.com/badge_code_v2.gne?count=10&display=random&size=s&layout=x&source=user&user=155012756@N06"></script>
+    <center><small>Quelques photos au hasard.</small></center></div>
+
+
+They are all visible on the `Flickr space of La Scène
+<https://www.flickr.com/photos/la_scene/albums>`_.
+
+And then what?
+==============
+
+A number of improvements or new features are
+planned. I also consider switching the software licence to open-source in order to
+to benefit other people. 
+
+To be continued...
+
+Feel free to `contact me
+<mailto:mathieu@antipodae.fr>`_ if you need more
+information.
