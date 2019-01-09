@@ -91,7 +91,8 @@ p.ad:first-line
 }
 
 
-/*.e-content>div>p:first-child:first-letter, */
+@media screen {
+   /* bug on chrome print */
 p.ad:first-letter
 {
     letter-spacing:0;
@@ -103,6 +104,7 @@ p.ad:first-letter
     float:left;
     margin:0.13em 0.1em 0 0;
     line-height:0.7;
+}
 }
 
 div.section>p {
@@ -324,36 +326,43 @@ body{font-size:18px;}}
 body{font-size:18px;}}
 
 @media print {
+   @page {
+      size: A4;
+      margin: 2.5cm;
+      @bottom-left {
+	 content:  counter(page) "/" counter(pages);
+      }
+   }
+   html, body {
+      width: 210mm;
+      height: 297mm;
+   }
    .body-content{
-      max-width: none;
-      width:100;
+      max-width: 22cm;
+      width:100%;
    }
 
    body, article {
-      width: 85%;
       margin: 0;
       padding: 0;
-      float: none;
+      /*float: none;*/
       font-size:18pt;
-   }
-   @page {
-      margin: 3cm;
-      size: A4;
-      counter-increment: page;
-
    }
    ul, img, a, blockquote, div.admonition {
       page-break-inside: avoid !important;
    }
    img {
       max-width: 100% ! important;
-      max-height: 14cm;
+      max-height: 12cm;
       object-fit: contain;
    }
-   h1, h2, h3, h4, h5, h6 { page-break-after:avoid;
-   page-break-inside:avoid }
+   h1, h2, h3, h4, h5, h6 {
+      page-break-after:avoid;
+      page-break-inside:avoid }
 
-   .blog-header, .hidden-print, .pager, nav, .navbar-toggler, .metadata {
+   video, .blog-header, .hidden-print, .pager, nav, .navbar-toggler, .metadata,
+   .screen-only
+   {
       display: none;
    }
    article a {
@@ -369,10 +378,12 @@ body{font-size:18px;}}
    }
 
    .qrcode, .print-only {
-      display: inherit;
+      display: initial;
    }
    header>h1 {
       counter-reset: page;
+      counter-increment: page;
+      counter-increment: page;
       margin-top: 1cm;
       margin-bottom: 2cm !important;
    }
