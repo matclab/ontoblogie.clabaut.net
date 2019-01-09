@@ -7,6 +7,11 @@
     <h1 class="p-name entry-title" itemprop="headline name"><a href="${post.permalink()}" class="u-url">${post.title()|h}</a></h1>
 %endif
 </%def>
+<%def name="html_origin_url()">
+    <p class="print-only"><a
+    href="${post.permalink(absolute=True)}">Lien vers l'article</a>
+<div class="qrcode">${qrcode(post.permalink(absolute=True))}</div> </p>
+</%def>
 
 <%def name="html_translations(post)">
     % if len(post.translated_to) > 1:

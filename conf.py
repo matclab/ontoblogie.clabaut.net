@@ -1405,9 +1405,18 @@ WARN_ABOUT_TAG_METADATA = False
 # those.
 # TEMPLATE_FILTERS = {}
 
+import segno
+import io
+def qrcode(url):
+    qr = segno.make(url)
+    buff = io.BytesIO()
+    qr.save(buff, kind='svg', unit='mm')
+    return(buff.getvalue().decode('utf-8').split('\n')[1])
+
 # Put in global_context things you want available on all your templates.
 # It can be anything, data, functions, modules, etc.
 GLOBAL_CONTEXT = {
+    "qrcode": qrcode,
     "social_links": [
     {
         'bgcolor': "#F44336",
