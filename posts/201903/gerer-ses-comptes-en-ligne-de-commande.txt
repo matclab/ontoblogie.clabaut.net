@@ -1,0 +1,515 @@
+.. title: Gérer ses comptes en ligne de commande
+.. slug: gerer-ses-comptes-en-ligne-de-commande
+.. date: 2019-03-12 11:35:47 UTC+01:00
+.. tags: fr
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+
+.. image:: /images/ledger/dollar.png
+     :class: "float-right"
+     :width: 200px
+     :alt: dollar and command line
+
+.. class:: ad
+
+   Les années passent, les enfants grandissent et voilà que s'annonce le temps
+   des études supérieures (et des coûts associés). C'est l'occasion de 
+   reprendre en main de manière un peu plus sérieuse ma gestion financière 
+   personnelle.
+
+J'ai essayé de revenir à `gnucash <https://www.gnucash.org>`_ que j'avais déjà 
+utilisé il y a quelques années, mais j'ai été confronté à quelques difficultés :
+
+- beaucoup de problèmes de stabilité,
+- la synchronisation avec les fichiers OFX récupérés de la banque demandait 
+  beaucoup trop d'actions manuelles.
+
+Après quelques recherches sur le web, je me suis décidé à essayer `ledger-cli 
+<https://www.ledger-cli.org/>`_ et je pense que je l'ai adopté. J'ai 
+maintenant une configuration qui permet :
+
+.. TEASER_END
+
+- la récupération des transactions bancaires via `weboob 
+  <http://weboob.org/>`_,
+- la synchronisation automatique avec mon livre de compte via `legder-autosync 
+  <https://github.com/egh/ledger-autosync>`_,
+- l'analyse des ajouts liés à la synchronisation grâce à un logiciel de 
+  gestion de version comme ``mercurial`` ou ``git``,
+- l'édition de rapport textuels variés grâce à la ligne de commande 
+  ``ledger``,
+- l'ajout aisé de transaction dans ``vim`` à l'aide du plugin `vim-ledger 
+  <https://github.com/ledger/vim-ledger>`_,
+- la synchronisation multi-appareil (android, linux) via `syncthing 
+  <https://syncthing.net/>`_ ou le logiciel de gestion de version,
+- la modification ou l'édition de rapports sur le téléphone grâce à 
+  l'utilisation de ``ledger`` en ligne de commande dans un shell `termux 
+  <https://termux.com/>`_. 
+
+Ce n'est pas facile à mettre en place pour Mme Michu, mais quel plaisir de 
+travailler en ligne de commande avec les outils qui vont bien.
+
+.. figure:: /images/ledger/livres_de_comptes_du_tailleur.jpeg
+   :class: "thumbnail img-responsive"
+   :width: 700px
+   :align: center
+   :alt: Livres de comptes du tailleur Louis-Hippolyte Leroy. « Grand livre - n° 5 » 
+   :target: /images/ledger/livres_de_comptes_du_tailleur.jpeg
+
+   Livres de comptes du tailleur Louis-Hippolyte Leroy. « Grand livre - n° 5 » 
+   (`Gallica <https://gallica.bnf.fr/ark:/12148/btv1b530841242>`_) 
+
+Documentation de référence
+==========================
+
+.. class:: ad
+
+   Le site https://plaintextaccounting.org/ est une mine d'information, ainsi 
+   que bien sûr la `documentation en ligne de ledger 
+   <https://www.ledger-cli.org/3.0/doc/ledger3.html>`_.
+
+Cette `« ledger CLI cheat sheet » <https://devhints.io/ledger>`_ est également 
+très utile.
+
+
+Comptabilité en partie double
+=============================
+
+.. class:: ad
+
+   C'est le principe de base du système comptable utilisé par ``ledger``. Ça 
+   paraît compliqué, mais ça veut simplement dire que pour chaque transaction, 
+   il y a au moins un compte débité et un compte crédité, et que la somme des 
+   crédits et débits de cette transaction est nulle.
+
+Concrètement, on peut avoir les transactions suivantes:
+
+.. code::
+
+   2019/03/08 Docteur
+      actif:banque:courant                      -30 €
+      dépense:santé                              30 €
+   
+   2019/03/12 Amazon
+      actif:banque:courant                     -118.84 € 
+      dépense:habitation:entretien              114.99 € 
+      dépense:habitation:fourniture               3.85 €
+
+
+Ce qui signifie que le 8 mars, j'ai débité 30 € de mon compte courant pour 
+payer le docteur et que cette dépense est enregistrée comme une dépense de 
+santé. De même, le 12 mars, j'ai acheté du matériel d'entretien et des 
+fournitures sur Amazon pour un montant de 118€84.
+
+Ce que vous voyez ici-dessus est exactement le contenu du livre de compte.  
+C'est un fichier ascii simple. Facile à saisir et à gérer en configuration. Un 
+simple ``hg diff`` (ou ``git diff``) permet de voir les modification en cours.
+
+L'outil ``ledger`` peut alors donner la balance des comptes :
+
+.. code::
+
+   ledger -f test.ledger bal
+              -148.84 €  actif:banque:courant
+               148.84 €  dépense
+               118.84 €    habitation
+               114.99 €      entretien
+                 3.85 €      fourniture
+                30.00 €    santé
+   --------------------
+                      0
+
+
+Notez que dans une transaction on peut laisser un des comptes de crédit ou de 
+débit sans montant auquel cas ``ledger`` calcule le montant manquant pour 
+assurer une transaction dont la balance est nulle.
+
+Organisation des fichiers
+==========================
+
+.. class:: ad
+
+   J'ai plusieurs comptes dans des banques différentes et j'ai choisi de 
+   mettre les transaction dans un fichier associé à chaque compte. J'ai alors 
+   le fichier principal ``perso.ledger`` qui inclus les autres fichiers :
+
+.. code::
+
+   include banque1-courant.ledger
+   include banque2-courant.ledger
+   include banque2-livreta.ledger
+
+Import des données
+==================
+
+Récupération des OXF
+---------------------
+
+J'ai écrit le petit script suivant qui récupère les comptes dans des fichiers 
+OXF :
+
+.. code::
+
+   #!/bin/bash
+
+   backends="-b bppc,boursorama"
+   accountsdir="/$HOME/banques/OXF"
+   format="${1:-oxf}"
+
+   function accountsList()
+   {
+         boobank --auto-update $backends list --formatter simple --no-header --no-keys --select id --condition 'type=1 OR type=2'
+   }
+
+   echo "Get accounts list..."
+   accountsList | while read account
+   do
+         filename="$accountsdir/$account"-$(date +%Y%m%d)".$format"
+         printf "Dump $account to $filename..."
+         boobank history "$account" -f "$format" -n 999 > "$filename" && printf "        ok!\n" || printf "      failed!\n"
+   done
+
+Les backends ``boobank`` sont configurés dans le fichier 
+``~/.config/weboob/backends``. Par exemple :
+
+.. code::
+
+   [bppc]
+   module = banquepopulaire
+   password = `runcached pass show weboob/bppc`
+   website = www.ibps.mediterranee.banquepopulaire.fr
+   login = XXXXXXXXXX
+
+   [boursorama]
+   module = boursorama
+   enable_twofactors = True
+   device = weboob
+   pin_code =
+   login = XXXXXXXXXXXX
+   password = `runcached pass show weboob/boursorama`
+
+
+Mes mots de passe sont gérés par l'application ``pass`` et chiffrés via une 
+clef yubikey. ``runcached`` est un script qui permet de cacher le mot de passe 
+quelques minutes afin de ne pas avoir à le ressaisir pour toutes les requêtes 
+réalisées par ``boobank``.
+
+Synchronisation dans ledger
+---------------------------
+
+.. class:: ad
+
+   J'utilise ensuite ``ledger-autosync`` (la branche de développement en 
+   python3) pour synchroniser les fichiers OXF avec le fichier ``ledger`` 
+   correspondant. Là aussi c'est fait dans un script, mais en gros ça donne 
+   pour chaque compte :
+
+.. code::
+
+   ledger-autosync -a "actif:banque:bppc" --assertions --fid "40618" \
+        -l "bppc-courant.ledger" "$OXFDIR/CPTYYYYYY@bppc.oxf" \
+        | sed -e 's/Expenses:Misc/dépense:Unknown/' -e 's/\<EUR\>/€/' \
+        >>  bppc-courant.ledger
+
+
+Le problème que vous avez alors à traiter et d'attribuer le bon compte de 
+dépense en lieu et place de tous les  ``dépense:Unknown`` que vous verrez sur 
+chaque transaction.
+
+Heureusement, ``ledger`` permet d'associer un compte à un certain nombre de 
+bénéficiaires lorsque le compte d'une transaction contient *Unknown*.
+
+Ainsi, le livre de compte suivant :
+
+.. code::
+
+   account dépense:santé
+      payee Docteur
+
+
+   2019/03/08 Docteur
+      actif:banque:courant                      -30 €
+      dépense:Unknown
+
+
+est interprété comme :
+
+.. code::
+
+   ledger -f test.ledger bal
+                 -30 €  actif:banque:courant
+                  30 €  dépense:santé
+   -------------------
+                     0
+
+
+Pour chaque fichier ``compte.ledger``, j'ai un fichier ``compte.account`` qui 
+est inclus et qui définit les bénéficiaires (payee) associés à chaque compte 
+ledger.
+
+
+Utilisation au quotidien
+=========================
+
+Hiérarchie des comptes
+----------------------
+
+Vous êtes libre, à titre personnel, de définir la hiérarchie qui vous 
+intéresse.
+En ce qui me concerne, j'ai quelque chose comme :
+
+.. code::
+
+   actif:banque1:courant
+   actif:banque1:livreta
+   actif:banque2:courant
+   capital:solde initial
+   dépense:administratif
+   dépense:alimentation
+   dépense:alimentation:cantine
+   dépense:alimentation:restaurant
+   dépense:banque:frais
+   dépense:cadeau
+   dépense:communication
+   dépense:divers
+   dépense:don
+   dépense:habitation:assurance
+   dépense:habitation:bricolage
+   dépense:habitation:construction
+   dépense:habitation:eau
+   dépense:habitation:entretien
+   dépense:habitation:fourniture
+   dépense:habitation:jardin
+   dépense:habitation:mobilier
+   dépense:habitation:électroménager
+   dépense:habitation:énergie
+   dépense:impôt
+   dépense:impôt:foncier
+   dépense:impôt:habitation
+   dépense:impôt:revenu
+   dépense:impôt:taxe
+   dépense:liquide
+   dépense:loisir
+   dépense:loisir:art
+   dépense:loisir:informatique
+   dépense:loisir:livre
+   dépense:loisir:logiciel
+   dépense:loisir:musique
+   dépense:loisir:photo
+   dépense:loisir:presse
+   dépense:loisir:spectacle expo
+   dépense:loisir:sport
+   dépense:loisir:voyage
+   dépense:mobilité
+   dépense:mobilité:avion
+   dépense:mobilité:commun
+   dépense:mobilité:voiture
+   dépense:mobilité:voiture:amende
+   dépense:mobilité:voiture:assurance
+   dépense:mobilité:voiture:carburant
+   dépense:mobilité:voiture:maintenance
+   dépense:mobilité:voiture:péage
+   dépense:mobilité:voiture:stationnement
+   dépense:mobilité:voiture:électricité
+   dépense:mobilité:vélo
+   dépense:remboursement
+   dépense:santé
+   dépense:service:web
+   dépense:vêtement
+   passif:prêt immobilier
+   revenu:assurance:caf
+   revenu:assurance:santé
+   revenu:banque
+   revenu:banque:intérêt
+   revenu:remboursement
+   revenu:salaire
+
+Exemple de requêtes
+--------------------
+
+- État de mes finances ::
+
+   ledger bal actif passif
+
+- Bilan des gains ou pertes sur 2018 ::
+
+   ledger bal dépense revenu -p 2018
+
+- Répartition moyenne mensuelle des dépenses pour 2018 ::
+
+   ledger bal -E -p 2018 dépense --display-total "display_total/12"
+
+- Total des dépenses mensuelles ::
+
+   ledger --group-by 'format_date(date, "%Y/%m")' bal dépense --depth 1
+
+  qui donne par exemple ::
+
+   2018/11
+            2078.02 €  dépense
+
+   2018/12
+            1775.98 €  dépense
+
+   2019/01
+            2973.27 €  dépense
+
+   2019/02
+            2988.48 €  dépense
+
+- Balance par mois sur 2019 ::
+
+   ledger --group-by 'format_date(date, "%Y/%m")' bal -p 2019
+
+
+Transactions automatiques
+-------------------------
+
+.. class:: ad
+
+   C'est une  fonctionnalité que j'utilise pour ajuster automatiquement 
+   certaines transactions.  Par exemple, je ne rentre pas le détail de mes 
+   dépenses faites avec du liquide retiré en DAB, mais j'estime que 70 % de 
+   mes retraits en liquide servent à des dépenses alimentaires.
+
+J'ai donc ajouté la transaction suivante :
+
+.. code::
+
+   = dépense:liquide
+         dépense:alimentation      0.7  ; 70% en alimentaire estimé
+         dépense:liquide          -0.7  ;
+
+De la même manière, j'ai calculé que sur chaque facture d'électricité, j'avais 
+environ 45€ qui étaient dédiés à la charge de la voiture. J'ai donc ajouté la 
+transaction suivante :
+
+.. code::
+
+   = /dépense:habitation:énergie/ and (expr payee =~ /Enercoop/)
+         dépense:mobilité:voiture:électricité  45 €  ; charge zoé estimée
+         dépense:habitation:énergie            -45€
+
+Ainsi, pour chaque transaction qui concerne le compte 
+``dépense:habitation:énergie`` et dont le bénéficiaire est *Enercoop*, je 
+débite le compte ``mobilité:voiture:électricité``de 45 € et je recrédite le 
+compte de dépense ``habitation:énergie`` de ces 45 €.
+
+
+Virement de compte à compte
+---------------------------
+
+.. class:: ad
+
+   J'ai un virement automatique mensuel de la banque qui reçoit mon salaire 
+   sur le compte courant de la banque que j'utilise au quotidien.
+
+Ces transactions sont enregistrées dans le fichier ``banque1.ledger`` comme 
+suit :
+
+.. code::
+
+   2019/03/01 * VIR.PERMANENT Salaire
+      actif:banque1:courant                         -1000.00 €
+      dépense:transfert vers banque2                 1000.00 €
+
+et dans le fichier ``banque2.ledger`` comme suit :
+
+.. code::
+
+   2019/03/04 * Salaire
+      actif:banque2:courant                          1000.00 €
+      revenu:transfert depuis banque1               -1000.00 €
+
+Le problème est que la balance affiche les deux compte de transfert, ce qui 
+vient polluer tous les rapports :
+
+.. code::
+
+   ledger -f test.ledger bal
+                    0  actif
+           -1000.00 €    banque1:courant
+            1000.00 €    banque2:courant
+            1000.00 €  dépense:transfert vers banque2
+           -1000.00 €  revenu:transfert depuis banque1
+   ------------------
+                    0
+
+La solution simple est élégante consiste à informer ``ledger`` que 
+``dépense:transfert vers banque2`` et ``revenu:transfert depuis banque1`` sont 
+un seul et même compte. Cela se fait grâce à la directive ``alias`` :
+
+.. code::
+
+   alias dépense:transfert vers banque2=revenu:transfert depuis banque1
+
+
+Ce qui donne bien le résultat escompté :
+
+.. code::
+
+   ledger -f test.ledger bal
+                    0  actif
+           -1000.00 €    banque1:courant
+            1000.00 €    banque2:courant
+   ------------------
+                    0
+
+Budget
+======
+
+.. class:: ad
+
+   Il est également possible de définir un budget. J'ai par exemple en tête de 
+   mon fichier ``perso.ledger`` :
+
+.. code::
+
+   ~ Monthly
+      dépense:alimentation                                 444 €
+      dépense:communication                                 56 €
+      dépense:divers                                        29 €
+      dépense:habitation:bricolage                          35 €
+
+   ~ Yearly
+      dépense:habitation:assurance                         380 €
+      dépense:mobilité:voiture:assurance                   330 €
+
+Ce qui me permet ensuite d'avoir un œil sur les dépense non budgetées :
+
+.. code::
+
+   ledger bal --unbudgeted dépense -p "this month"
+               27.35 €  dépense
+                0.06 €    banque:frais
+               23.90 €    cadeau
+                3.39 €    service:web
+   -------------------
+               27.35 €
+
+Ou de faire un point sur le budget de l'année (le rapport donne en pourcentage 
+un avancement des différents compte par rapport au budget) :
+
+.. code::
+
+    ledger budget -p 2019 dépense revenu
+
+
+La documentation parle aussi de la possibilité de faire des prévisions (avec 
+l'option ``--forecast``), mais cela ne fonctionne pas et de nombreux rapports 
+de bug relatifs à cette fonctionnalité sont ouvert sur le github du projet.
+
+Conclusion
+==========
+
+.. class:: ad
+
+   Ledger-cli est un outil vraiment puissant. Une fois mis en route, on 
+   apprécie la possibilité de travailler avec les outils du quotidien (éditeur 
+   de texte, gestion de conf, ligne de commande, complétion automatique,…).
+
+Beaucoup de fonctionnalités n'ont pas été abordées dans cette article. Je 
+ferais sans doute un article supplémentaire pour tracer l'évolution de ma 
+façon de travailler avec ``ledger-cli``.

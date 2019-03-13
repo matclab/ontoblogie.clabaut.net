@@ -1,0 +1,289 @@
+.. title: Tutoriel : un puzzle en découpe laser
+.. slug: un-puzzle-en-decoupe-laser
+.. date: 2018-12-31 17:41:45 UTC+01:00
+.. tags: fr,fablab
+.. category: 
+.. link: 
+.. description: Tutoriel pour réaliser un puzzle en découpe laser
+.. type: text
+
+.. role:: screen-only
+.. role:: print-only
+
+.. image:: /images/fablab/puzzle_fini.jpg
+     :class: "float-right"
+     :width: 200px
+     :alt: Puzzle découpé et peint. CP 8 mm.
+
+
+.. class:: ad
+
+    Un fablab a ouvert depuis peu à la médiathèque `Les Carmes 
+    <http://www.ville-pertuis.fr/vivre-a-pertuis/culture-animations/mediatheque>`_ 
+    de Pertuis.  Il est équipé
+    de quelques imprimantes 3D, d'un atelier, d'une découpeuse laser et d'une
+    solide volonté de promouvoir l'échange entre participants.
+
+Cet article décrit le retour d'expérience de la fabrication d'un puzzle en
+bois.
+
+.. TEASER_END
+
+.. class:: ad
+
+   Dans notre famille élargie aux cousins, nous limitons les cadeaux de Noël à
+   des objets créés de nos mains pour une personne tirée au sort. Il nous est
+   naturellement venu l'idée de tirer profit de la découpeuse laser du fablab
+   pour fabriquer un puzzle en bois pour une des petites cousines.
+
+
+Dessin
+======
+
+.. class:: ad
+
+   La première étape est de dessiner le motif du puzzle. Ma fille ainée a 
+   dessiné sur papier le petit éléphanteau ci-dessous :
+
+.. figure:: /images/fablab/dessin.png
+     :class: "thumbnail img-responsive"
+     :width: 500px
+     :align: center
+     :alt: Dessin de l'éléphant
+     :target: /images/fablab/dessin.png
+
+     Dessin de l'éléphant
+
+Vectorisation
+=============
+
+.. class:: ad
+
+   Il s'agit ensuite de préparer une version vectorisée du dessin. C'est à 
+   dire une version ou les contour à graver ou à découper son représentés par 
+   une formule mathématique (vectorielle) plutôt que par des pixels.
+
+Pour se faire, j'ai utilisé l'outil libre `Inkscape 
+<https://inkscape.org/fr/>`_.
+
+La première étape est de faire un scan ou une photo du dessin :
+
+.. figure:: /images/fablab/éléphant.jpg
+     :class: "thumbnail img-responsive"
+     :width: 500px
+     :align: center
+     :alt: Scan du dessin de l'éléphant
+     :target: /images/fablab/éléphant.jpg
+
+     Scan du dessin de l'éléphant
+
+Puis en utilisant l'outil *courbe de bézier* |outil bézier|
+ou :kbd:`Maj` + :kbd:`F6`, de reproduire le contour de l'éléphant et celui de 
+la découpe des pièces.  Une bonne pratique est de créer un calque pour la 
+gravure et un calque pour la découpe.  Ça permet d'isoler ce sur quoi on 
+travaille et d'éviter de modifier par erreur les découpes quand on travaille 
+sur la gravure et vice-versa.  Ça permet aussi de sélectionner facilement tous 
+les éléments de la découpe pour en modifier les attributs sans toucher aux 
+éléments de la gravure.
+
+Pour ajouter un calque il faut aller dans le menu
+*Calque > Ajouter un calque* :kbd:`Maj` + :kbd:`Ctrl` + :kbd:`N`. Vous pouvez 
+ainsi créer trois calques l'un au dessus de l'autre : *dessin*, *gravure* et 
+*découpe*.  Sélectionnez le calque dessin en utilisant l'interface de 
+sélection du calque en base de la fenêtre |sélection calque|, puis importez le 
+dessin scanné (*fichier > importer* ou :kbd:`Ctrl` + :kbd:`i`).  Vous pouvez 
+ajuster l'opacité du calque dans la fenêtre de gestion des calques (*Calque > 
+Calque…* ou :kbd:`Maj` + :kbd:`Ctrl` + :kbd:`L`). Ça permet d'avoir juste une 
+esquisse en gris clair du dessin et de laisser plus de visibilité sur le 
+travail en cours.
+
+Sélectionnez le calque *contour*, puis l'outil *courbe de bézier* pour tracer 
+le contour de l'éléphant.
+
+Sélectionnez ensuite le calque *découpe* et tracez de la même façon le contour 
+des pièces.
+
+Préparation du fichier pour la découpe
+======================================
+
+.. class:: ad
+
+   La découpeuse laser est vue de l'ordinateur comme une imprimante, qui prend 
+   directement un fichier SVG en entrée. C'est simple, mais il y a quelques 
+   conventions à respecter :
+
+.. Important::
+  1. Le trait de coupe doit être rouge ({{% color #FF0000FF %}}) et d'une 
+     largeur de 1 pixel.
+  2. Les zones de gravure doivent être des chemins remplis (idéalement en 
+     niveaux de gris).
+
+Lors des premiers essais, j'avais créé pour l'éléphant un chemin avec un trait 
+de 3 mm de large, mais rien n'apparaissait sur le bois lors de la gravure. Une 
+solution simple est de sélectionner l'ensemble des éléments à graver (ce qui 
+est facile si on a pris soin de mettre tous ces éléments de dessins dans un 
+même calque, puisqu'il suffit de faire :kbd:`Ctrl` + :kbd:`a`) puis de 
+transformer ces objets en chemins via le menu *Chemin > Objet en chemin* ou 
+:kbd:`Maj` + :kbd:`Ctrl` + :kbd:`c`.
+
+.. tip::
+
+   Il est prudent de garder une version originale du tracé, car il est plus 
+   difficile de modifier ce dernier une fois qu'il a été transformé en 
+   chemins.
+
+
+
+Pour le tracé de découpe, après avoir sélectionné l'ensemble des objets dans 
+le calque *découpe*, il faut ajuster les propriétés des éléments ainsi 
+sélectionnés en utilisant le menu *Objet > Fond et Contour…*
+ou :kbd:`Maj` + :kbd:`Ctrl` + :kbd:`f` et en positionnant les réglages comme 
+indiqué dans les figures ci-dessous.
+
+
+.. figure:: /images/fablab/contour_découpe.png
+     :class: "thumbnail img-responsive"
+     :align: center
+     :alt: Réglages de la couleur du contour pour la découpe
+     :target: /images/fablab/contour_découpe.png
+
+     Réglages de la couleur rouge du contour pour la découpe
+
+
+.. figure:: /images/fablab/épaisseur_découpe.png
+     :class: "thumbnail img-responsive"
+     :align: center
+     :alt: Réglages de l'épaisseur du contour pour la découpe
+     :target: /images/fablab/épaisseur_découpe.png
+
+     Réglages de l'épaisseur de 1 pixel du contour pour la découpe
+
+Une fois fini, ça donne ce type de rendu dans le logiciel de dessin (vous
+pouvez le télécharger :print-only:`sur le site web` pour faire votre propre
+puzzle) :
+
+.. figure:: /images/fablab/puzzle-laser.svg
+     :class: "thumbnail img-responsive"
+     :align: center
+     :width: 400px
+     :alt: Dessin SVG préparé pour la découpe
+     :target: /images/fablab/puzzle-laser.svg
+
+     Dessin SVG préparé pour la découpe
+
+Préparation de la découpeuse
+=============================
+
+Avant d'utiliser la découpeuse, il faut faire la mise au point de l'optique de 
+découpe.
+Ça se fait comme suit :
+
+- descendre le plateau et y déposer la pièce à découper,
+- poser l'étalon de mise au point sur la tête laser,
+- remonter doucement le plateau jusqu'à ce que l'étalon de mise au point 
+  tombe.
+
+Il faut aussi placer la tête dans un coin de la pièce à découper, et 
+prévisualiser le mouvement de la tête (via l'action *vérification de gabarit* 
+dans le menu contextuel du logiciel de pilotage de la découpeuse) pour 
+s'assurer que la tête ne sort pas de la pièce à découper lors de la découpe.
+
+
+Premier Essai
+=============
+
+.. class:: ad
+
+   Lors de mon premier essai, j'ai voulu découper le puzzle sur une planche de 
+   pin de 18 mm d'épaisseur (spoiler : *ce n'était pas une bonne idée*).
+   :screen-only:`Voici ce que ça donne :`
+
+.. youtube:: k3HRmER7xKA
+   :align: center
+
+.. .. raw:: html
+..  
+..    <center>
+..    <video controls style="height:500px;" type="video/webm" 
+..    src="/videos/fablab/découpe_laser.webm">
+..     <i>Je suis désolé, votre navigateur ne supporte pas les vidéos HTML5
+..   au format WebM avec VP8.</i>
+..    </video></center>
+
+À la première passe de découpe,  le laser allait très vite, trop vite pour 
+être efficace sur cette épaisseur de bois.  Nous avons donc refait une 
+deuxième passe de découpe plus lente (visible dans la vidéo :print-only:`sur
+le blog` à 50 secondes). Ça 
+semble bien :
+
+.. figure:: /images/fablab/découpe_pin.jpg
+     :class: "thumbnail img-responsive"
+     :align: center
+     :width: 500px
+     :alt: Recto de la découpe sur planche de pin 18 mm
+     :target: /images/fablab/découpe_pin.jpg
+
+     Recto de la découpe sur planche de pin 18 mm
+
+Mais ce n'est pas suffisant. Voici ce que donne le verso de la planche :
+
+.. figure:: /images/fablab/découpe_verso.jpg
+     :class: "thumbnail img-responsive"
+     :align: center
+     :width: 500px
+     :alt: Verso de la découpe sur planche de pin 18 mm
+     :target: /images/fablab/découpe_verso.jpg
+
+     Verso de la découpe sur planche de pin 18 mm
+
+La découpe est incomplète sur une bonne partie du contour et je n'ai pas 
+réussi à terminer la découpe au cutter sans casser le puzzle… Un second 
+passage au fablab s'impose.
+
+Tests de découpe et calibration
+===============================
+
+.. class:: ad
+
+   Fort de l'expérience précédente, je retourne au fablab muni d'une planche 
+   de contre-plaqué de 12 mm et d'une planche de 8 mm.
+
+.. Important::
+
+   Il est essentiel de faire un test de découpe sur le matériau envisagé pour 
+   calibrer la puissance et la vitesse du laser.
+
+   Par exemple, faire des tests avec un petit rond de 1 cm de diamètre.
+
+Le 12 mm était trop dur, et il a été impossible de couper sans brûler 
+profondément le bois. Nous avons finalement trouvé un réglage satisfaisant 
+pour le CP de 8 mm. Une fois découpé, et peint, ça donne le puzzle suivant, 
+qui j'espère donnera satisfaction à la petite cousine :
+
+.. figure:: /images/fablab/puzzle_fini.jpg
+     :class: "thumbnail img-responsive"
+     :align: center
+     :width: 500px
+     :alt: Puzzle fini
+     :target: /images/fablab/puzzle_fini.jpg
+
+     Puzzle fini
+
+.. Tip::
+
+   On observe que le bois est légèrement bruni à côté de la gravure ou de la 
+   trompe. Ça peut être évité en commençant la gravure depuis le bas, afin que 
+   les fumées qui se dégagent interfèrent moins avec le laser.
+ 
+Conclusion
+==========
+
+Ce guide est encore incomplet sur certains points. J'essaierai de le compléter 
+lors d'utilisations futures. N'hésitez pas à poser vos questions ou à évoquer 
+vos difficultés ou astuces !
+
+
+.. |sélection calque| image:: /images/fablab/sélection_calque.png
+
+
+.. |outil bézier| image:: /images/fablab/courbe_bézier.png
