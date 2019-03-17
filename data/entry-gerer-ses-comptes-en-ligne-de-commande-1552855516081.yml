@@ -1,0 +1,20 @@
+_id: 916f5210-48f5-11e9-9062-d128b376a347
+name: Mathieu Clabaut
+email: 96464a145ab7360e70d32220881f3a15
+message: >-
+  Je ne me suis pas encore vraiment penché sur les graphiques dans la mesure ou
+  ces informations sont disponibles en ligne de commande.
+
+  Ceci dit, certaines personnes ont fait des choses :
+
+
+  - utilisation de gnuplot :
+  https://www.sundialdreams.com/report-scripts-for-ledger-cli-with-gnuplot/
+
+  -  application fournissant une page web permettant de produire des graphiques
+  : https://kndrck.co/posts/ledger-analytics/
+
+
+  Je pense que je ferais un jour quelque chose avec gnuplot… Si j’aboutis à
+  quelque chose de satisfaisant, je ferais un deuxième billet.
+date: 1552855516
