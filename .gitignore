@@ -9,3 +9,5 @@ state_data.json
 .hg
 .hgignore
 tags
+**.webm
+posts/201812/video

@@ -59,11 +59,11 @@
 <span id="fileexplorer"></span><h3>4.3.2. Avec l’explorateur de fichiers<a class="headerlink" href="#with-the-file-explorer" title="Lien permanent vers ce titre">¶</a></h3>
 <div class="section" id="from-a-windows-computer">
 <h4>4.3.2.1. Depuis un ordinateur sous Windows<a class="headerlink" href="#from-a-windows-computer" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Vous pouvez parcourir les photos depuis un ordinateur sous windows en parcourant <code class="docutils literal notranslate"><span class="pre">\\192.168.0.44\Photo_Miroir</span></code> avec l’explorateur windows (après avoir remplacé 192.168.0.44 par l’adresse IP locale de votre <em>PhotoMiroir</em> comme expliqué en <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
+<p>Vous pouvez parcourir les photos depuis un ordinateur sous Windows en parcourant <code class="docutils literal notranslate"><span class="pre">\\192.168.0.44\Photo_Miroir</span></code> avec l’explorateur windows (après avoir remplacé 192.168.0.44 par l’adresse IP locale de votre <em>PhotoMiroir</em> comme expliqué en <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
 </div>
 <div class="section" id="from-a-linux-computer">
 <h4>4.3.2.2. Depuis un ordinateur sous linux<a class="headerlink" href="#from-a-linux-computer" title="Lien permanent vers ce titre">¶</a></h4>
-<p>Vous pouvez parcourir le répertoire des photos depuis votre explorateur de fichier sous linux en allant sur <code class="docutils literal notranslate"><span class="pre">smb://192.168.0.44/Photo_Miroir</span></code> (après avoir remplacé 192.168.0.44 par l’adresse IP locale de votre <em>PhotoMiroir</em> comme expliqué en <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
+<p>Vous pouvez parcourir le répertoire des photos depuis votre explorateur de fichier sous Linux en allant sur <code class="docutils literal notranslate"><span class="pre">smb://192.168.0.44/Photo_Miroir</span></code> (après avoir remplacé 192.168.0.44 par l’adresse IP locale de votre <em>PhotoMiroir</em> comme expliqué en <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
 </div>
 <div class="section" id="from-a-mac-computer">
 <h4>4.3.2.3. Depuis un ordinateur sous MacOS<a class="headerlink" href="#from-a-mac-computer" title="Lien permanent vers ce titre">¶</a></h4>
@@ -82,6 +82,23 @@
 <div class="section" id="with-a-native-application">
 <h3>4.4.2. Avec une application native<a class="headerlink" href="#with-a-native-application" title="Lien permanent vers ce titre">¶</a></h3>
 <p>Vous pouvez aussi utiliser un logiciel de diaporama natif sur votre ordinateur en le configurant pour accéder aux fichier sur le partage réseau du <em>PhotoMiroir</em>, comme expliqué en <a class="reference internal" href="#fileexplorer"><span class="std std-numref">Section 4.3.2</span></a></p>
+</div>
+<div class="section" id="add-predefined-photos-to-the-slideshow">
+<h3>4.4.3. Ajouter des photos prédéfinies au diaporama<a class="headerlink" href="#add-predefined-photos-to-the-slideshow" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Vous pouvez ajouter des photos qui seront insérées régulièrement dans le diaporama. Cela peut par exemple servir pour insérer des images promotionnelles ou informatives, par exemple sur l’existence et l’utilisation du PhotoMiroir. Ces photos seront affichée tour à tour toutes les 10 photos. Vous pouvez changer cette valeur en ajoutant <code class="docutils literal notranslate"><span class="pre">?sb=n</span></code> à l’URL du diaporama. Par exemple, <a class="reference external" href="http://192.168.0.44/slideshow?sb=5">http://192.168.0.44/slideshow?sb=5</a> affichera 5 photos entre deux photos prédéfinies.  Vous pouvez aussi combiner les paramètres <code class="docutils literal notranslate"><span class="pre">d</span></code> et <code class="docutils literal notranslate"><span class="pre">sb</span></code> avec la syntaxe suivante&nbsp;: <a class="reference external" href="http://192.168.0.44/slideshow?sb=5&amp;d=10">http://192.168.0.44/slideshow?sb=5&amp;d=10</a></p>
+<p>Pour ajouter une photo, vous devez vous connecter au partage Windows comme expliqué ci-après, mais vous devez d’abord vous être connecté une fois à l’interface d’administration (voir <a class="reference internal" href="configuration.html#eventadmin"><span class="std std-numref">Section 3.1.1</span></a>)  afin de créer les identifiants Windows. Une fois cela fait, vous pourrez vous connecter au partage Windows avec les mêmes identifiants.</p>
+<div class="section" id="id2">
+<h4>4.4.3.1. Depuis un ordinateur sous Windows<a class="headerlink" href="#id2" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Vous pouvez ajouter des photos depuis un ordinateur sous Windows en parcourant <code class="docutils literal notranslate"><span class="pre">\\192.168.0.44\Photo_Miroir</span></code> avec l’explorateur windows (après avoir remplacé 192.168.0.44 par l’adresse IP locale de votre <em>PhotoMiroir</em> comme expliqué en <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
+</div>
+<div class="section" id="id3">
+<h4>4.4.3.2. Depuis un ordinateur sous linux<a class="headerlink" href="#id3" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Vous pouvez ajouter des photos depuis votre explorateur de fichier sous Linux en allant sur <code class="docutils literal notranslate"><span class="pre">smb://192.168.0.44/Photo_Miroir</span></code> (après avoir remplacé 192.168.0.44 par l’adresse IP locale de votre <em>PhotoMiroir</em> comme expliqué en <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
+</div>
+<div class="section" id="id4">
+<h4>4.4.3.3. Depuis un ordinateur sous MacOS<a class="headerlink" href="#id4" title="Lien permanent vers ce titre">¶</a></h4>
+<p><strong>TODO</strong></p>
+</div>
 </div>
 </div>
 </div>
@@ -128,6 +145,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#display-a-slideshow">4.4. Afficher un diaporama</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">4.4.1. Depuis un navigateur web</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#with-a-native-application">4.4.2. Avec une application native</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-predefined-photos-to-the-slideshow">4.4.3. Ajouter des photos prédéfinies au diaporama</a></li>
 </ul>
 </li>
 </ul>

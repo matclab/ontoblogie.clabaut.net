@@ -361,10 +361,11 @@ body{font-size:18px;}}
       page-break-inside:avoid }
 
    video, .blog-header, .hidden-print, .pager, nav, .navbar-toggler, .metadata,
-   .screen-only
+   .youtube-video, .screen-only, #player, .html5-video-player, .ytp-embed
    {
       display: none;
    }
+
    article a {
       font-weight: bolder;
       text-decoration: none;

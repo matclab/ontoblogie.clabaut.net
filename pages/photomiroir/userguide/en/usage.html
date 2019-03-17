@@ -70,14 +70,14 @@ as shown in <a class="reference internal" href="installation.html#getip"><span c
 <span id="fileexplorer"></span><h3>4.3.2. With the File Explorer<a class="headerlink" href="#with-the-file-explorer" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="from-a-windows-computer">
 <h4>4.3.2.1. From a Windows Computer<a class="headerlink" href="#from-a-windows-computer" title="Permalink to this headline">¶</a></h4>
-<p>You can browse the photo from your windows file explorer by accessing
+<p>You can browse the photo from your Windows file explorer by accessing
 <code class="docutils literal notranslate"><span class="pre">\\192.168.0.44\Photo_Miroir</span></code>
 (after replacing 192.168.0.44 with the local IP address of your <em>PhotoMiroir</em>
 as shown in <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
 </div>
 <div class="section" id="from-a-linux-computer">
 <h4>4.3.2.2. From a Linux Computer<a class="headerlink" href="#from-a-linux-computer" title="Permalink to this headline">¶</a></h4>
-<p>You can browse the photo from your linux file explorer by accessing
+<p>You can browse the photo from your Linux file explorer by accessing
 <code class="docutils literal notranslate"><span class="pre">smb://192.168.0.44/Photo_Miroir</span></code>
 (after replacing 192.168.0.44 with the local IP address of your <em>PhotoMiroir</em>
 as shown in <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
@@ -107,6 +107,40 @@ adding <code class="docutils literal notranslate"><span class="pre">?d=n</span><
 <h3>4.4.2. With a Native Application<a class="headerlink" href="#with-a-native-application" title="Permalink to this headline">¶</a></h3>
 <p>You can also configure a native slideshow application on your PC to access the
 photo on the network share, as shown in <a class="reference internal" href="#fileexplorer"><span class="std std-numref">Section 4.3.2</span></a></p>
+</div>
+<div class="section" id="add-predefined-photos-to-the-slideshow">
+<h3>4.4.3. Add Predefined Photos to the Slideshow<a class="headerlink" href="#add-predefined-photos-to-the-slideshow" title="Permalink to this headline">¶</a></h3>
+<p>You may add some photos that will be interleaved into the slideshow. For
+example, you may display some images in prder to advertise for the existence
+and the use of the PhotoMiroir. Those photos will be displayed in turn every
+ten photos. You may change this value to <code class="docutils literal notranslate"><span class="pre">n</span></code> by appending <code class="docutils literal notranslate"><span class="pre">?sb=n</span></code> to the
+slideshow URL. For example:
+<a class="reference external" href="http://192.168.0.44/slideshow?sb=5">http://192.168.0.44/slideshow?sb=5</a> would change the number of photos between
+the predefined one to 5.  You may also combine the <code class="docutils literal notranslate"><span class="pre">d</span></code> and <code class="docutils literal notranslate"><span class="pre">sb</span></code> parameter
+with the following syntax: <a class="reference external" href="http://192.168.0.44/slideshow?sb=5&amp;d=10">http://192.168.0.44/slideshow?sb=5&amp;d=10</a></p>
+<p>To add the photo you have to connect to the Windows file share as explained
+here after, but first you have to identify yourself once on the admin panel
+(see <a class="reference internal" href="configuration.html#eventadmin"><span class="std std-numref">Section 3.1.1</span></a>) in order to create teh windows credentials. Only
+then you will be able to connect to the Windows share with the same
+credentials.</p>
+<div class="section" id="id2">
+<h4>4.4.3.1. From a Windows Computer<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>You can put additional photos from your Windows file explorer by accessing
+<code class="docutils literal notranslate"><span class="pre">\\192.168.0.44\More</span> <span class="pre">Slideshow</span> <span class="pre">Photos</span></code>
+(after replacing 192.168.0.44 with the local IP address of your <em>PhotoMiroir</em>
+as shown in <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
+</div>
+<div class="section" id="id3">
+<h4>4.4.3.2. From a Linux Computer<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>You can put additional photos from your Linux file explorer by accessing
+<code class="docutils literal notranslate"><span class="pre">smb://192.168.0.44/More</span> <span class="pre">Slideshow</span> <span class="pre">Photos</span></code>
+(after replacing 192.168.0.44 with the local IP address of your <em>PhotoMiroir</em>
+as shown in <a class="reference internal" href="installation.html#getip"><span class="std std-numref">Section 2.3</span></a>).</p>
+</div>
+<div class="section" id="id4">
+<h4>4.4.3.3. From a Mac Computer<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p><strong>TODO</strong></p>
+</div>
 </div>
 </div>
 </div>
@@ -153,6 +187,7 @@ photo on the network share, as shown in <a class="reference internal" href="#fil
 <li class="toctree-l2"><a class="reference internal" href="#display-a-slideshow">4.4. Display a Slideshow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">4.4.1. From a Web Navigator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#with-a-native-application">4.4.2. With a Native Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-predefined-photos-to-the-slideshow">4.4.3. Add Predefined Photos to the Slideshow</a></li>
 </ul>
 </li>
 </ul>
