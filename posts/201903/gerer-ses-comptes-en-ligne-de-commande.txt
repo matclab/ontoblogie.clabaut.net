@@ -160,7 +160,8 @@ OXF :
 
    function accountsList()
    {
-         boobank --auto-update $backends list --formatter simple --no-header --no-keys --select id --condition 'type=1 OR type=2'
+         boobank --auto-update $backends list --formatter simple --no-header\
+                 --no-keys --select id --condition 'type=1 OR type=2'
    }
 
    echo "Get accounts list..."
@@ -168,6 +169,7 @@ OXF :
    do
          filename="$accountsdir/$account"-$(date +%Y%m%d)".$format"
          printf "Dump $account to $filename..."
+         boobank history "$account" -f "$format" -n 999 > "$filename" &&\
          boobank history "$account" -f "$format" -n 999 > "$filename" && printf "        ok!\n" || printf "      failed!\n"
    done
 
