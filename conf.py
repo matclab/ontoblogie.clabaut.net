@@ -1413,9 +1413,13 @@ def qrcode(url):
     qr.save(buff, kind='svg', unit='mm')
     return(buff.getvalue().decode('utf-8').split('\n')[1])
 
+from markdown import Markdown
+md = Markdown()
+
 # Put in global_context things you want available on all your templates.
 # It can be anything, data, functions, modules, etc.
 GLOBAL_CONTEXT = {
+    "md": md.convert,
     "qrcode": qrcode,
     "social_links": [
     {
@@ -1468,4 +1472,5 @@ PING_GET_SERVICES = [
     "http://www.bing.com/webmaster/ping.aspx?sitemap={0}".format(SITE_URL+'sitemap.xml'),
     "http://www.google.com/webmasters/tools/ping?sitemap={0}".format(SITE_URL+'sitemap.xml'),
 ]
+
 

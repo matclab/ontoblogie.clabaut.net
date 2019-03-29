@@ -87,7 +87,7 @@
             <label class="col-md-4 col-form-label" for="commentText">Comment</label>
             <div class="col-md-6">
                 <textarea class="form-control" id="commentText"
-		name="fields[message]" required></textarea>
+		name="fields[message]" placeholder="Comment (markdown format)" required></textarea>
             </div>
             </div>
 
@@ -110,7 +110,7 @@
                 <h3 class="panel-title">Comment by: ${data[k]['name'] | h}</h3>
             </div>
             <div class="panel-body">
-                ${data[k]['message'] | h}
+                ${data[k]['message'] | md}
             </div>
             </div>
             % endif
