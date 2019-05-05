@@ -1,0 +1,516 @@
+.. title: Manage your accounts on the command line
+.. slug: manage-your-accounts-on-the-command-line
+.. date: 2019-03-29 11:35:47 UTC+01:00
+.. tags: fr
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+
+.. image:: /images/ledger/dollar.png
+     :class: "float-right"
+     :width: 200px
+     :alt: dollar and command line
+
+.. class:: ad
+
+   As the years go by, the children grow up and the time comes for
+   higher education (and associated costs). This is an opportunity to
+   take back control of my personal finances a little more seriously.
+
+I tried `gnucash <https://www.gnucash.org>`_ that I have already
+used a few years ago, but I met some difficulties:
+
+- I had a lot of stability problems (segfault),
+- synchronization with OFX files retrieved from the bank required
+  far too many manual actions.
+
+After some research on the web, I decided to try `ledger-cli
+<https://www.ledger-cli.org/>`_ and I think I have now adopted it.  My 
+configuration now allows:
+
+.. TEASER_END
+
+- recovery of banking transactions via `weboob
+  <http://weboob.org/>`_,
+- automatic synchronization with my account book via `legder-autosync
+  <https://github.com/egh/ledger-autosync>`_,
+- analysis of synchronization-related additions using
+  version management like ``mercurial`` or ``git``,
+- editing various text reports using the command line
+  ``ledger``,
+- easy addition of transactions to ``vim`` using the `vim-ledger' plugin
+  <https://github.com/ledger/vim-ledger>`_,
+- multi-device synchronization (android, linux) via `syncthing
+  <https://syncthing.net/>`_ or the version management software,
+- the modification of ledger files and edition of reports on the phone thanks 
+  to
+  the use of ``ledger`` tool in the `termux <https://termux.com/>`_ terminal.
+
+It's not easy for Mrs. Jones to set up, but what a pleasure to work on the
+command line with tools that work so well.
+
+.. figure:: /images/ledger/livres_de_comptes_du_tailleur.jpeg
+   :class: "thumbnail img-responsive"
+   :width: 700px
+   :align: center
+   :alt: Books of accounts of the tailor Louis-Hippolyte Leroy. "General Ledger - No. 5"
+   :target: /images/ledger/livres_de_comptes_du_tailleur.jpeg
+
+   Books of accounts of the tailor Louis-Hippolyte Leroy. "General Ledger - No. 5"
+   (`Gallica <https://gallica.bnf.fr/ark:/12148/btv1b530841242>`_)
+
+Reference documentation
+==========================
+
+.. class:: ad
+
+   The website https://plaintextaccounting.org/ is a mine of information, as well as
+   of course the `online documentation of ledger
+   <https://www.ledger-cli.org/3.0/doc/ledger3.html>`_.
+
+This `"ledger CLI cheat sheet" <https://devhints.io/ledger>`_ is also
+very useful.
+
+
+Double-entry accounting
+=============================
+
+.. class:: ad
+
+   *Double-entry accounting* is the base principle of the accounting system 
+   used by ``ledger``. It sounds complicated at first, but it just means that 
+   each transaction shall concerned at least two accounts, one which is 
+   debited and one which is credited, and that the sum of the credits and 
+   debits of this transaction is null.
+
+For example, we can have the following transactions:
+
+.. code::
+
+   2019/03/08 Doctor
+      assets:bank:current           -30 €
+      expenses:health                30 € 
+
+   2019/03/12 Amazon
+      assets:bank:current          -118.84 €
+      expenses:house:maintenance    114.99 €
+      expenses:house:supply           3.85 €
+
+
+This means that on March 8, I debited €30 from my current account to
+pay the doctor which is recorded as a health expense. And on March 12, I 
+purchased maintenance equipment and supplies on Amazon for an amount of 
+€118.84.
+
+What you see here above is exactly the content of the ledger file.
+A simple ascii text file. Easy to type and to manage. A simple ``hg diff`` (or 
+``git diff``) allows you to see the current changes.
+
+The ``ledger`` tool can then give the balance of accounts:
+
+.. code::
+
+   ledger -f test.ledger bal
+              -148.84 € assets:bank:current
+               148.84 € expenses
+               118.84 €   house
+               114.99 €     maintenance
+                 3.85 €     supply
+                30.00 €   health
+   --------------------
+                      0
+
+
+Note that in a transaction you can leave one of line without amount in which 
+case ``ledger`` computes the missing value in order to ensure a balanced 
+transaction.
+
+File organization
+==========================
+
+.. class:: ad
+
+   I have several accounts in different banks and for the ease of 
+   synchronisationņ  I have chosen to separate the transactions in several 
+   files, one per bank account. For example, I have
+   one main file ``perso.ledger`` which includes all the other files:
+
+.. code::
+
+   include bank1-current.ledger
+   include bank2-current.ledger
+   include bank2-livret.ledger
+
+Data import
+==================
+
+OXF downloading
+---------------------
+
+I wrote the following little script that recovers accounts in files
+OXF :
+
+.. code::
+
+   #!/bin/bash
+
+   backends="-b bppc,boursorama"
+   accountsdir="/$HOME/banques/OXF"
+   format="${1:-oxf}"
+
+   function accountsList()
+   {
+         boobank --auto-update $backends list --formatter simple --no-header\
+                 --no-keys --select id --condition 'type=1 OR type=2'
+   }
+
+   echo "Get accounts list..."
+   accountsList | while read account
+   do
+         filename="$accountsdir/$account"-$(date +%Y%m%d)".$format"
+         printf "Dump $account to $filename..."
+         boobank history "$account" -f "$format" -n 999 > "$filename" &&\
+           printf "        ok!\n" || printf "      failed!\n"
+   done
+
+The ``boobank`` backends are configured in the file  
+``~/.config/weboob/backends``. For example:
+
+.. code::
+
+   [bppc]
+   module = banquepopulaire
+   password = `runcached pass show weboob/bppc`
+   website = www.ibps.mediterranee.banquepopulaire.fr
+   login = XXXXXXXXXX
+
+   [boursorama]
+   module = boursorama
+   enable_twofactors = True
+   device = weboob
+   pin_code =
+   login = XXXXXXXXXXXX
+   password = `runcached pass show weboob/boursorama`
+
+
+My passwords are managed by the ``pass`` application and encrypted via a 
+yubikey. ``runcached`` is a script that allows me to cache the passwords a few 
+minutes so that I don't have to re-enter it for all requests carried out by 
+``boobank``.
+
+Synchronization with ledger
+---------------------------
+
+.. class:: ad
+
+   I then use ``ledger-autosync`` to synchronize OXF files with the 
+   corresponding ledger file. It's done with a script, which  basically does 
+   for each account:
+
+.. code::
+
+   ledger-autosync -a "actif:banque:bppc" --assertions --fid "40618" \
+        -l "bppc-courant.ledger" "$OXFDIR/CPTYYYYYY@bppc.oxf" \
+        | sed -e 's/Expenses:Misc/expenses:Unknown/' -e 's/\<EUR\>/€/' \
+          >>  bppc-courant.ledger
+
+
+The problem you then have to deal with, is to assign the right expense or
+income account to  transactions in place of the default ``expenses:Unknown`` 
+account.
+
+Fortunately, ``ledger`` allows you to associate an account with several 
+payees, and replace the *Unknown* account with the one associated with the 
+transaction payee.
+
+Thus, the following ledger file:
+
+.. code::
+
+   account expenses:health
+      paid Doctor
+
+
+   2019/03/08 Doctor
+      assets:bank:current -30 €
+      Expenses:Unknown
+
+
+is interpreted as:
+
+.. code::
+
+   ledger -f test.ledger bal
+                 -30 € assets:bank:current
+                  30 € expenses:health
+   -------------------
+                     0
+
+
+For each file ``accountname.ledger``, I have a file ``accountname.account`` which 
+is included and defines the payees associated with each *ledger* account.
+
+
+Daily use
+=========================
+
+Account hierarchy
+----------------------
+
+You are free to define the account hierarchy your interested in.
+As far as I'm concerned, I have something like:
+
+.. code::
+
+   assets:bank1:current
+   assets:bank1:livret
+   assets:bank2:current
+   assets:initial balance
+   expenses:administrative
+   expenses:food
+   expenses:food:canteen
+   expenses:food:restaurant
+   expenses:bank:fees
+   expenses:gift
+   expenses:communication
+   expenses:miscellaneous
+   expenses:donation
+   expenses:housing:insurance
+   expenses:housing:DIY
+   expenses:housing:construction
+   expenses:housing:water
+   expenses:housing:maintenance
+   expenses:housing:supply
+   expenses:housing:garden
+   expenses:housing:furniture
+   expenses:housing:household appliances
+   expenses:housing:energy
+   expenses:tax
+   expenses:tax:property tax
+   expenses:tax:housing
+   expenses:tax:income
+   expenses:cash
+   expenses:leisure
+   expenses:leisure:art
+   expenses:leisure:computer
+   expenses:leisure:book
+   expenses:leisure:software
+   expenses:leisure:music
+   expenses:leisure:photo
+   expenses:leisure:press
+   expenses:leisure:exhibition
+   expenses:leisure:sport
+   expenses:leisure:travel
+   expenses:mobility
+   expenses:mobility:airplane
+   expenses:mobility:rail
+   expenses:mobility:car
+   expenses:mobility:car:fine
+   expenses:mobility:car:insurance
+   expenses:mobility:car:fuel
+   expenses:mobility:car:maintenance
+   expenses:mobility:car:toll
+   expenses:mobility:car:parking
+   expenses:mobility:car:electricity
+   expenses:mobility:bicycle
+   expenses:reimbursement
+   expenses:health
+   expenses:service:web
+   expenses:clothing
+   liabilities:loan
+   income:insurance:family
+   income:insurance:health
+   income:bank
+   income:bank:interest
+   income:reimbursement
+   income:salary
+
+Example of requests
+--------------------
+
+- State of my finances::
+
+   ledger bal assets liabilities
+
+- Balance sheet of gains or losses over 2018::
+
+   ledger bal income expenses -p 2018
+
+- Average monthly distribution of expenses for 2018::
+
+   ledger bal -E -p 2018 expenses --display-total "display_total/12"
+
+- Total monthly expenses::
+
+   ledger --group-by 'format_date(date, "%Y/%m")' bal expenses --depth 1
+
+  which gives for example::
+
+   2018/11
+            2078.02 € expenses
+
+   2018/12
+            1775.98 € expenses
+
+   2019/01
+            2973.27 € expenses
+
+   2019/02
+            2988.48 € expenses
+
+- Balance per month over 2019::
+
+   ledger --group-by : format_date(date, "%Y/%m")' bal -p 2019
+
+
+Automatic transactions
+-------------------------
+
+.. class:: ad
+
+   Automatic transatcions is a feature I use to automatically adjust some 
+   transactions.  For example, I don't want to enter the details of my cash 
+   expenses, but I estimate that 70% of my cash withdrawals are used to buy  
+   food.
+
+Thus I added the following automatic transaction:
+
+.. code::
+
+   = expenses:cash
+         expenses:food     0.7 ; 70% for food (estimated)
+         expenses:cash    -0.7 ;
+
+In the same way, I estimate that for each electricity bill, I have about €45  
+dedicated to the electric car. So I added the following automatic transaction:
+
+.. code::
+
+   = /expenses:housing:energy/ and (expr payee =~ /Enercoop/)
+         expenses:mobility:car:electricity   45 €; estimated zoé monthly cost
+         expenses:housing:energy            -45€
+
+Thus, for each transaction associate with the account 
+``Expense:housing:energy`` and whose payee is *Enercoop*, I 
+decrease the ``mobility:car:electricity`` account by €45 and I credit back 
+the expense account ``housing:energy`` with €45.
+
+
+Account to account transfers
+----------------------------
+
+.. class:: ad
+
+   I have a monthly money transfer from the bank that receives my salary 
+   to the bank who hosts  my everyday account.
+
+Those transactions are recorded in the file ``bank1.ledger`` as 
+follows:
+
+.. code::
+
+   2019/03/01 * PERMANENT TRSFR. Salary
+      assets:bank1:current          -1000.00 €
+      expenses:transfer to bank2     1000.00 €
+
+and in the file ``bank2.ledger`` as follows:
+
+.. code::
+
+   2019/03/04 * Salary
+      assets:bank2:current           1000.00 €
+      income:transfer from bank1    -1000.00 €
+
+The problem is that the balance displays both transfer accounts, which 
+pollutes all the reports:
+
+.. code::
+
+   ledger -f test.ledger bal
+                    0 assets
+           -1000.00 € bank1:current
+            1000.00 € bank2:current
+            1000.00 € expenses:transfer to bank2
+           -1000.00 € income:transfer from bank1
+   ------------------
+                    0
+
+The simple and elegant solution is to inform ``ledger`` that 
+``expenses:transfer to bank2`` and ``income:transfer from bank1`` are indeed 
+the same account. This is done through the ``alias`` directive:
+
+.. code::
+
+   alias expenses:transfer to bank2=income:transfer from bank1
+
+
+This gives the expected result:
+
+.. code::
+
+   ledger -f test.ledger bal
+                    0 assets
+           -1000.00 € bank1:current
+            1000.00 € bank2:current
+   ------------------
+                    0
+
+Budget
+======
+
+.. class:: ad
+
+   It is also possible to define a budget. For example, I have at the top the
+   ``perso.ledger`` file:
+
+.. code::
+
+   ~  Monthly
+      expenses:food          444 €
+      expenses:communication 56  € 
+      expenses:miscellaneous 29  €
+      expenses:housing:DIY   35  €
+
+   ~ Yearly
+      expenses:housing:insurance      380 €
+      expenses:mobility:car:insurance 330 €
+
+It then allows me to keep an eye on unbudgeted expenses:
+
+.. code::
+
+   ledger bal --unbudgeted expenses -p "this month"
+               27.35 € expenses
+                0.06 €  bank:fees
+               23.90 €  gift
+                3.39 €  service:web
+   -------------------
+               27.35 €
+
+Or to review the budget for the year (the report gives 
+a progress percentage of the accounts with respect to the budget):
+
+.. code::
+
+    ledger budget -p 2019 expenses income
+
+
+The documentation also talks about the possibility of making forecasts (with 
+the ``--forecast`` option), but it doesn't work and many bugs reports 
+related to this feature are open on the project github.
+
+Conclusion
+==========
+
+.. class:: ad
+
+   Ledger-cli is a really powerful tool. Once configured, I 
+   appreciate the opportunity to work with everyday tools (text editor, VCS
+   tool, command line, automatic completion,...).
+
+Many features have not been covered in this article. I will 
+probably do an additional article to track the evolution of my 
+way of working with ``ledger-cli``.
+
+

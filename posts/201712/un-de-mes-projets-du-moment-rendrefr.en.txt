@@ -18,7 +18,7 @@
 .. class:: ad
 
    It's been a few months since one of my personal projects get online.
-   Namely, https://rendre.fr, a service to help you find your lost items with the help of
+   Namely, https://bback.me, a service to help you find your lost items with the help of
    *people*!
 
 This service is based on the observation that most people are willing to
