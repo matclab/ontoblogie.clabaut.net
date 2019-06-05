@@ -89,7 +89,7 @@ However, a number of additionnal features were expected for such an environment:
 Upon Axel's request, I developed a small box based on a *Raspberry Pi* that
 connects to the camera via an USB cable and to the local wifi in order to provide
 these features.  If you want to get a more precise idea, the `user
-documentation is visible here </pages/photomiroir/userguide/en/>`_.
+documentation is visible here </pages/photomiroir/userguide/en/index.html>`_.
 
 
 Technical Side

@@ -91,7 +91,9 @@ utilisation dans ce type d'environnement :
 
 À la demande d'Axel, je lui ai développé un petit boîtier à base de
 *Raspberry Pi* qui se branche sur l'appareil photo via un câble USB et sur le wifi local afin de
-remplir ces fonctionnalités.  Si vous voulez vous faire une idée plus précise, la `documentation utilisateur est visible ici </pages/photomiroir/userguide/fr/>`_.
+remplir ces fonctionnalités.  Si vous voulez vous faire une idée plus précise,
+la `documentation utilisateur est visible ici
+</pages/photomiroir/userguide/fr/index.html>`_.
 
 
 Technique
