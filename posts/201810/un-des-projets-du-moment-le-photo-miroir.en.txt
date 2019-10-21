@@ -2,7 +2,6 @@
 .. slug: photo-mirror
 .. date: 2018-10-28 17:54:22 UTC+01:00
 .. tags: computer,raspberry,photo
-.. category: en
 .. link: 
 .. description: The Photo-Mirror, a low-tech photo booth.
 .. type: text

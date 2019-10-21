@@ -2,7 +2,6 @@
 .. slug: photo-miroir
 .. date: 2018-10-28 17:54:22 UTC+01:00
 .. tags: informatique,raspberry,photo
-.. category: fr
 .. link: 
 .. description: Le Photo-miroir 
 .. type: text

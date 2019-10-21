@@ -2,7 +2,6 @@
 .. slug: monter-un-phare-sur-un-velo-electrique-mate
 .. date: 2018-01-21 16:50:44 UTC+01:00
 .. tags: vélo
-.. category: fr
 .. link: 
 .. description: Comment monter un phare sur le vélo électrique pliable MATE
 .. type: text

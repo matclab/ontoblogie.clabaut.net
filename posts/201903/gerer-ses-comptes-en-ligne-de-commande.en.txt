@@ -2,7 +2,6 @@
 .. slug: manage-your-accounts-on-the-command-line
 .. date: 2019-03-29 11:35:47 UTC+01:00
 .. tags: ledger,bank
-.. category: en
 .. link: 
 .. description: 
 .. type: text

@@ -2,7 +2,6 @@
 .. slug: un-puzzle-en-decoupe-laser
 .. date: 2018-12-31 17:41:45 UTC+01:00
 .. tags: fablab
-.. category: fr
 .. link: 
 .. description: Tutoriel pour réaliser un puzzle en découpe laser
 .. type: text

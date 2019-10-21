@@ -2,7 +2,6 @@
 .. slug: mount-headlight-on-mate-electric-bike
 .. date: 2018-01-21 16:50:44 UTC+01:00
 .. tags: bike
-.. category: en
 .. link: 
 .. description: How to mount a headlight on the MATE folding electric bicycle
 .. type: text

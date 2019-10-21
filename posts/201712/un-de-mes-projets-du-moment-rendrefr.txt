@@ -2,7 +2,6 @@
 .. slug: un-de-mes-projets-du-moment-rendrefr
 .. date: 2017-12-30 18:18:38 UTC+01:00
 .. tags: informatique,web
-.. category: fr
 .. link: https://rendre.fr
 .. description: rendre.fr mon projet pour aider les gens à retrouver les objets perdus
 .. type: text

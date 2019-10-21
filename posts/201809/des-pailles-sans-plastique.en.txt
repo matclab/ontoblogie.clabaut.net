@@ -2,7 +2,6 @@
 .. slug: straws-without-plastic
 .. date: 2018-09-11 11:36:13 UTC+02:00
 .. tags: ecology
-.. category: en
 .. link: 
 .. description: How to replace plastic straws.
 .. type: text
