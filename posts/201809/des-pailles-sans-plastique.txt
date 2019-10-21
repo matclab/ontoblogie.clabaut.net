@@ -1,8 +1,8 @@
 .. title: Des pailles sans plastique !
 .. slug: des-pailles-sans-plastique
 .. date: 2018-09-11 11:36:13 UTC+02:00
-.. tags: vert,fr
-.. category: 
+.. tags: écologie
+.. category: fr
 .. link: 
 .. description: Comment remplacer les pailles en plastique.
 .. type: text

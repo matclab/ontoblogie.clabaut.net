@@ -1,8 +1,8 @@
 .. title: Use Nikola/GAE on android device
 .. slug: use-nikola-gae-on-android-device
 .. date: 2018-01-20 15:01:42 UTC+01:00
-.. tags: en,computer
-.. category:
+.. tags: computer,android
+.. category: en
 .. link:
 .. description: How to use Nikola to write your blog and deploy it on GAE from an Android phone
 .. type: text

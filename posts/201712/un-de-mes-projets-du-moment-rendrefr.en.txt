@@ -1,8 +1,8 @@
 .. title: One of my side project: bback.me
 .. slug: one-of-my-side-project-bback-me
 .. date: 2017-12-30 18:18:38 UTC+01:00
-.. tags: en,computer
-.. category: 
+.. tags: computer,web
+.. category: en
 .. link: https://bback.me
 .. description: bback.me, my project to help ppeople find their lost items back.
 .. type: text

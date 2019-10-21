@@ -1,8 +1,8 @@
 .. title: Monter un phare sur un vélo électrique MATE
 .. slug: monter-un-phare-sur-un-velo-electrique-mate
 .. date: 2018-01-21 16:50:44 UTC+01:00
-.. tags: fr,vélo
-.. category: 
+.. tags: vélo
+.. category: fr
 .. link: 
 .. description: Comment monter un phare sur le vélo électrique pliable MATE
 .. type: text
@@ -163,3 +163,9 @@ Conclusion
 Je vais commencer lundi à l'utiliser régulièrement. J'en saurais bientôt un 
 peu plus sur sa durabilité, son autonomie réelle ainsi que sur l'efficacité
 des lampes.
+
+Après quelques mois d'utilisation, je suis déçu par la qualité du vélo. Les
+freins ne freinent pas très bien, la batterie a une durée de vie faible, la
+nouvelle batterie envoyée en garantie n'était pas ajustée comme il faut et
+après deux ouvertures du vélo l'embout de la batterie est cassé. Bref,
+évitez !

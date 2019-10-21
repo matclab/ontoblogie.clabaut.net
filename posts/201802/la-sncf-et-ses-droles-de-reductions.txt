@@ -1,8 +1,8 @@
 .. title: La SNCF et ses drôles de réductions
 .. slug: la-sncf-et-ses-droles-de-reductions
 .. date: 2018-02-18 12:19:48 UTC+01:00
-.. tags: fr,sncf
-.. category: 
+.. tags: sncf,tranchedevie
+.. category: fr
 .. link: 
 .. description: Comment se faire arnaquer par la SNCF. 
 .. type: text

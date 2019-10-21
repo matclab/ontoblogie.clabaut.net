@@ -1,8 +1,8 @@
 .. title: Mounting a headlight on a MATE electric bicycle
 .. slug: mount-headlight-on-mate-electric-bike
 .. date: 2018-01-21 16:50:44 UTC+01:00
-.. tags: en,bike
-.. category: 
+.. tags: bike
+.. category: en
 .. link: 
 .. description: How to mount a headlight on the MATE folding electric bicycle
 .. type: text
@@ -161,3 +161,8 @@ I will start using it on  a regular basis starting on Monday. Soon I will know
 a little more about the durability and real autonomy of this bike and if the
 headlight is bright enough for a night usage.
 
+After a few months of use, I am disappointed by the quality of the bike. The
+brakes do not work very well, the battery has a short life, the
+new battery sent under warranty was not properly adjusted and
+after two openings of the bike the battery cap is broken. 
+Avoid it!

@@ -1,7 +1,8 @@
 .. title: Photos de rue — Carnaval de La-Tour-d'Aigues
 .. slug: photos-de-rue-carnaval-de-la-tour
 .. date: 2011-08-15 14:33:00
-.. tags: fr,photo
+.. tags: photo
+.. category: fr
 .. description: 
 
 

@@ -1,8 +1,8 @@
 .. title: Gérer ses comptes en ligne de commande
 .. slug: gerer-ses-comptes-en-ligne-de-commande
 .. date: 2019-03-12 11:35:47 UTC+01:00
-.. tags: fr
-.. category: 
+.. tags: banque,comptes
+.. category: fr
 .. link: 
 .. description: 
 .. type: text

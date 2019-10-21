@@ -1,8 +1,8 @@
 .. title: Migrating blog to nikola + GAE
 .. slug: migrating-blog-to-nikola-+-gae
 .. date: 2017-12-28 19:14:23 UTC+01:00
-.. tags: en, computer
-.. category: 
+.. tags: computer,web
+.. category: en
 .. link: 
 .. description: 
 .. type: text
