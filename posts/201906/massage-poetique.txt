@@ -7,6 +7,10 @@
 .. description: 
 .. type: text
 
+.. image:: /images/massage.jpg
+     :class: "float-right"
+     :width: 200px
+     :alt: Massage
 
 Hier j'ai eu la chance de vivre l'expérience d'un massage poétique, 
 un concept imaginé et réalisé par *Rozenn Guilcher* et l'équipe du *Voyage
