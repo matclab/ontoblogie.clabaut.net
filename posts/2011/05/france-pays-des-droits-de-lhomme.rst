@@ -2,7 +2,6 @@
 .. slug: france-pays-des-droits-de-lhomme
 .. date: 2011-05-03 22:00:00
 .. tags: liberté,société
-.. category: fr
 .. description: 
 
 

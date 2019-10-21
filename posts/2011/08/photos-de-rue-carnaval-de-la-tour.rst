@@ -2,7 +2,6 @@
 .. slug: photos-de-rue-carnaval-de-la-tour
 .. date: 2011-08-15 14:33:00
 .. tags: photo
-.. category: fr
 .. description: 
 
 

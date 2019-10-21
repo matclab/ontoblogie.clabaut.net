@@ -1,8 +1,7 @@
 .. title: Lettre à Eva Joly
 .. slug: lettre-eva-joly
 .. date: 2012-04-20 07:09:00
-.. tags: égalité,fraternité,liberté,fr,société
-.. category: fr
+.. tags: égalité,fraternité,liberté,société
 .. description: 
 
 

@@ -1,7 +1,7 @@
 .. title: Journalisme, politique, mensonges et démocratie
 .. slug: journalisme-politique-mensonges-et
 .. date: 2011-08-15 16:52:00
-.. tags: fr,société
+.. tags: société
 .. description: 
 
 *« Les journalistes ne croient pas les mensonges des hommes politiques, mais ils les répètent ! C’est pire ! » — Coluche*

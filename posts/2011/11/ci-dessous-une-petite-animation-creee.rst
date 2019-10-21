@@ -2,7 +2,6 @@
 .. slug: ci-dessous-une-petite-animation-creee
 .. date: 2011-11-25 21:13:00
 .. tags: dessin
-.. category: fr
 .. description: 
 
 Ci-dessous une petite animation créée par ma deuxième fille… J’avoue que

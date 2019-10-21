@@ -2,7 +2,6 @@
 .. slug: migrating-blog-to-nikola-+-gae
 .. date: 2017-12-28 19:14:23 UTC+01:00
 .. tags: computer,web
-.. category: en
 .. link: 
 .. description: 
 .. type: text

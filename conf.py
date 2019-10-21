@@ -404,7 +404,8 @@ HIDDEN_TAGS = ['mathjax']
 #     {'en': 'private', 'de': 'Privat'},
 #     {'en': 'work', 'fr': 'travail', 'de': 'Arbeit'},
 TAG_TRANSLATIONS = [ {'fr': 'informatique', 'en':'computer'},
-                     {'fr': 'vélo',  'en': 'bike'}
+                     {'fr': 'vélo',  'en': 'bike'},
+                     {'fr': 'écologie',  'en': 'ecology'},
                     ]
 
 # If set to True, a tag in a language will be treated as a translation
@@ -417,8 +418,8 @@ TAG_TRANSLATIONS = [ {'fr': 'informatique', 'en':'computer'},
 # output / TRANSLATION[lang] / CATEGORY_PATH / CATEGORY_PREFIX category.html (list of posts for a category)
 # output / TRANSLATION[lang] / CATEGORY_PATH / CATEGORY_PREFIX category RSS_EXTENSION (RSS feed for a category)
 # (translatable)
-# CATEGORY_PATH = "categories"
-# CATEGORY_PREFIX = "cat_"
+CATEGORY_PATH = "categories"
+CATEGORY_PREFIX = "cat_"
 
 # By default, the list of categories is stored in
 #     output / TRANSLATION[lang] / CATEGORY_PATH / index.html

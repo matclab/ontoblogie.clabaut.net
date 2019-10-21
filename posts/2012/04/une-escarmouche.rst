@@ -1,7 +1,7 @@
 .. title: Une escarmouche
 .. slug: une-escarmouche
 .. date: 2012-04-14 20:30:00
-.. tags: fr,dessin
+.. tags: dessin
 .. description: 
 
 Un « vieux » dessin fait après des discussions avec les filles sur le
