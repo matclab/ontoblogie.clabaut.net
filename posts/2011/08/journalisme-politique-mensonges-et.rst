@@ -4,8 +4,7 @@
 .. tags: fr,société
 .. description: 
 
-    *« Les journalistes ne croient pas les mensonges des hommes
-    politiques, mais ils les répètent ! C’est pire ! » — Coluche*
+*« Les journalistes ne croient pas les mensonges des hommes politiques, mais ils les répètent ! C’est pire ! » — Coluche*
 
 .. image:: /images/mensonge.jpg
      :class: "float-right"

@@ -1473,4 +1473,9 @@ PING_GET_SERVICES = [
     "http://www.google.com/webmasters/tools/ping?sitemap={0}".format(SITE_URL+'sitemap.xml'),
 ]
 
+# Compiler to process Sass files.
+SASS_COMPILER = 'sassc'
 
+# A list of options to pass to the Sass compiler.
+# Final command is: SASS_COMPILER SASS_OPTIONS file.s(a|c)ss
+SASS_OPTIONS = []

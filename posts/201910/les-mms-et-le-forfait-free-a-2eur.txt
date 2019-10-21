@@ -1,0 +1,98 @@
+.. title: Les MMS et le forfait free à 2€
+.. slug: les-mms-et-le-forfait-free-a-2eur
+.. date: 2019-10-19 11:10:30 UTC+02:00
+.. tags: fr
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+
+.. image:: /images/apn-overview.png
+     :class: "float-right"
+     :width: 300px
+     :alt: Liste des APN Free
+
+.. class:: ad
+
+   L'opérateur de téléphonie mobile Free propose un forfait à deux euros. Ce forfait est vraiment intéressant pour les personnes ayant un petit usage de leur téléphone. Il offre des SMS et MMS illimités, 2 heures de communication et 50 Mo de données.
+
+   Il y a un seul petit hic : il faut que les données mobiles soient activées pour envoyer et recevoir les MMS. Les données utilisées pour les MMS  ne sont pas décomptées du quota de 50 Mo. Si les données mobiles sont activées, elles sont aussi utilisées par les autres applications, et la limite de 50 Mo est vite dépassée, entraînant des frais supplémentaires.
+
+.. TEASER_END
+
+De nombreuses recherches internet ne m'ont pas permis de trouver une solution, mais j'ai mieux compris le fonctionnement des APN et le rôle des données mobiles pour l'envoi des MMS.
+
+
+Après quelques essais, j'ai trouvé le contournement suivant :
+
+- pour envoyer et recevoir des MMS en désactivant l'utilisation des données mobiles part les autres applications :
+
+  1. supprimer l'APN Free,
+  2. activer les données mobiles.
+
+- pour réactiver les données mobiles pour toute les applications :
+
+  1. re-créer l'APN Free,
+  2. laisser les données mobiles activées.
+
+
+.. class:: ad
+
+   Ca fonctionne bien, mais malheureusement ce n'est pas très intuitif. Voici dans le détail les manipulations à faire :
+
+
+Désactiver l'APN Free
+=====================
+
+1. Aller dans le menu de configuration :menuselection:`Réseaux mobiles`
+
+.. figure:: /images/apn-réseau-mobile.png
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :align: center
+     :alt: Paramètres > Réseaux mobiles
+     :target: /images/apn-réseau-mobile.png
+
+2. Cliquer sur :menuselection:`Noms des points d'accès`
+
+.. figure:: /images/apn-liste.png
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :align: center
+     :alt: Liste réseaux mobiles
+     :target: /images/apn-liste.png
+
+
+3. Cliquer sur :menuselection:`Free`, puis dans le menu en haut à droite sur :menuselection:`Supprimer l'APN`
+
+.. figure:: /images/apn-supprimer.png
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :align: center
+     :alt: Supprimer APN
+     :target: /images/apn-supprimer.png
+
+
+.. figure:: /images/apn-supprimé.png
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :align: center
+     :alt: APN supprimé
+     :target: /images/apn-supprimé.png
+
+Rétablir l'APN Free
+===================
+
+pour rétablir l'APN Free, il faut retourner dans le menu
+:menuselection:`Réseaux mobiles --> Noms des points d'accès` et cliquer sur le menu en haut à droite puis sur le :menuselection:`Rétablir les paramètres par défaut`.
+
+.. figure:: /images/apn-rétablir.png
+     :class: "thumbnail img-responsive"
+     :width: 400px
+     :align: center
+     :alt: Rétablir les APN.
+     :target: /images/apn-rétablir.png
+
+.. class:: ad
+  
+   Voilà, j'espère que ça vous dépannera. Chez nous ça c'est avéré assez utile.
