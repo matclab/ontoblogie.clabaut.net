@@ -92,6 +92,5 @@ pour rétablir l'APN Free, il faut retourner dans le menu
      :alt: Rétablir les APN.
      :target: /images/apn-rétablir.png
 
-.. class:: ad
   
-   Voilà, j'espère que ça vous dépannera. Chez nous ça c'est avéré assez utile.
+Voilà, j'espère que ça vous dépannera. Chez nous ça c'est avéré assez utile.
