@@ -73,7 +73,7 @@ Installer Nikola proprement dit
 
    workon nikola # si vous n'êtes pas déjà dans l'environnement
    pkg install libxml2-dev libjpeg-turbo-dev libxslt-dev
-   LDFLAGS="-L/system/lib/" CFLAGS="-I/data/data/com.termux/files/usr/include/" pip install "Nikola[extras]"
+   LDFLAGS="-L/system/lib64/" CFLAGS="-I/data/data/com.termux/files/usr/include/" pip install "Nikola[extras]"
 
 Installer le google cloud sdk
 -----------------------------

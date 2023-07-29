@@ -74,7 +74,7 @@ Install Nikola itself
 
    workon nikola # if you are not already in the virtualenv
    pkg install libxml2-dev libjpeg-turbo-dev libxslt-dev
-   LDFLAGS="-L/system/lib/" CFLAGS="-I/data/data/com.termux/files/usr/include/" pip install "Nikola[extras]"
+   LDFLAGS="-L/system/lib64/" CFLAGS="-I/data/data/com.termux/files/usr/include/" pip install "Nikola[extras]"
 
 
 Install the google cloud sdk
