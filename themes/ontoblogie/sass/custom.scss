@@ -34,8 +34,10 @@ div.align-center {
   margin-top: 20px;
 }
 
-p.caption {
-  font-weight: 100;
+p.caption, figcaption>p {
+   text-align: center;
+  font-weight: 400;
+  font-style: italic;
   padding-top: 0.2em;
   padding-bottom: 1em;
 }
