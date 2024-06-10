@@ -1011,12 +1011,12 @@ RSS_COPYRIGHT_FORMATS = CONTENT_FOOTER_FORMATS
 # systems.  The following comment systems are supported by Nikola:
 #   disqus, facebook, googleplus, intensedebate, isso, livefyre, muut
 # You can leave this option blank to disable comments.
-COMMENT_SYSTEM = "staticman"
+COMMENT_SYSTEM = "mastodoncomments"
 # And you also need to add your COMMENT_SYSTEM_ID which
 # depends on what comment system you use. The default is
 # "nikolademo" which is a test account for Disqus. More information
 # is in the manual.
-COMMENT_SYSTEM_ID = ""
+COMMENT_SYSTEM_ID = "mamot.fr"
 
 # Create index.html for page folders?
 # WARNING: if a page would conflict with the index file (usually
@@ -1268,7 +1268,6 @@ BODY_END = """
   ga('create', 'UA-55431698-2', 'auto');
   ga('send', 'pageview');
 </script>
-<script src="/assets/js/staticman-comments.js"></script>
 """
 
 # The possibility to extract metadata from the filename by using a
@@ -1422,6 +1421,10 @@ md = Markdown()
 GLOBAL_CONTEXT = {
     "md": md.convert,
     "qrcode": qrcode,
+    "mastodon_config": {
+        'account_id': '24105',
+        'account' : 'matclab'
+    },
     "social_links": [
     {
         'bgcolor': "#F44336",

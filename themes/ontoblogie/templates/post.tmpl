@@ -58,64 +58,10 @@
     </nav>
     </aside>
      % if not post.meta('nocomments') and site_has_comments:
-            <section class="comments hidden-print">
-            <form class="form-horizontal staticman-comment-form" method="POST"
-	    action="https://vps.antipodae.fr/v2/entry/matclab/ontoblogie.clabaut.net/master/comments">
-            <fieldset>
+	 <section class="comments hidden-print">
 
-            <!-- Form Name -->
-            <legend>Leave a comment</legend>
-
-            <!-- Text input-->
-            <div class="form-group row">
-            <input type="hidden" name="options[slug]" value="${post.meta('slug')}">
-            <label class="col-md-4 col-form-label" for="commentName">Name</label>
-            <div class="col-md-6">
-            <input id="commentName" name="fields[name]" type="text" placeholder="John Doe" class="form-control input-md" required="">
-            <span class="help-block">The name you want to show others</span>
-            </div>
-            </div>
-            <div class="form-group row">
-            <label class="col-md-4 col-form-label" for="emailText">Email</label>
-            <div class="col-md-6">
-                <input class="form-control" id="emailText" name="fields[email]" type="text" placeholder="John.Doe@example.com" class="form-control input-md" required></input>
-            </div>
-            </div>
-
-            <!-- Textarea -->
-            <div class="form-group row">
-            <label class="col-md-4 col-form-label" for="commentText">Comment</label>
-            <div class="col-md-6">
-                <textarea class="form-control" id="commentText"
-		name="fields[message]" placeholder="Comment (markdown format)" required></textarea>
-            </div>
-            </div>
-
-            <!-- Button -->
-            <div class="form-group row">
-            <label class="col-md-4 col-form-label" for="submit"></label>
-            <div class="col-md-4">
-                <button id="commentSubmit" class="btn btn-primary" name="submit" class="btn btn-success">Submit</button>
-            </div>
-            </div>
-
-            </fieldset>
-            </form>
-
-            % for k in sorted(data.keys(), reverse=True):
-            % if post.meta('slug') in k:
-
-            <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Comment by: ${data[k]['name'] | h}</h3>
-            </div>
-            <div class="panel-body">
-                ${data[k]['message'] | md}
-            </div>
-            </div>
-            % endif
-            % endfor
-
+        <h2>${messages("Comments")}</h2>
+        ${comments.comment_form(post.permalink(absolute=True), post.title(), post._base_path)}
         </section>
     % endif
     ${math.math_scripts_ifpost(post)}
