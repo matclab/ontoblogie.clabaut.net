@@ -5,6 +5,7 @@
 .. link: 
 .. description: How to replace plastic straws.
 .. type: text
+.. mastodon: 112592908330473709
 
 .. figure:: /images/pailles/verre1paille.jpg
      :alt: A straw in a glass

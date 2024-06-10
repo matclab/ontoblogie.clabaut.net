@@ -5,6 +5,7 @@
 .. link: 
 .. description: Comment remplacer les pailles en plastique.
 .. type: text
+.. mastodon: 112592908330473709
 
 .. figure:: /images/pailles/verre1paille.jpg
      :alt: Une paille dans un verre
