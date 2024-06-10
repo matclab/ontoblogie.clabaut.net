@@ -1238,6 +1238,15 @@ FEED_TEASERS = True
 # <!-- End of custom search -->
 # """ % SITE_URL
 
+SEARCH_FORM = """
+<div id="search"></div>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
+    });
+</script>
+"""
+
 # Use content distribution networks for jQuery, twitter-bootstrap css and js,
 # and html5shiv (for older versions of Internet Explorer)
 # If this is True, jQuery and html5shiv are served from the Google CDN and

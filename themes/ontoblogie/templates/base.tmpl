@@ -1,6 +1,8 @@
 ## -*- coding: utf-8 -*-
 <%namespace name="base" file="base_helper.tmpl" import="*" />
 <%namespace name="notes" file="annotation_helper.tmpl" import="*" />
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
 <!-- language redirect -->
 <script>
 if (document.location.href.endsWith("ontoblogie.clabaut.net/") ||
@@ -31,9 +33,6 @@ ${template_hooks['extra_head']()}
             <button class="navbar-toggler navbar-light bg-light nbb-navbar-toggler" type="button" data-toggle="collapse" data-target=".bs-nav-collapsible" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse bs-nav-collapsible bootblog4-search-form-holder">
-                ${search_form}
-            </div>
         </div>
           <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand order-1" style="width: auto;">
             <a class="navbar-brand blog-header-logo text-dark" href="${abs_link(_link("root", None, lang))}">
@@ -73,6 +72,9 @@ ${template_hooks['extra_head']()}
         </div><!-- /.navbar-collapse -->
 </nav>
 <%block name="before_content"></%block>
+<div class="collapse bs-nav-collapsible bootblog4-search-form-holder">
+      ${search_form}
+</div>
 </div>
 
 <div class="container" id="content" role="main">
