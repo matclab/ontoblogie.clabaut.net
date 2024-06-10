@@ -659,7 +659,7 @@ REDIRECTIONS = [
 # in a `nikola deploy` command as you like.
 DEPLOY_COMMANDS = {
     'default': [
-        "cd output && gcloud app deploy --project ontoblogie-blog"
+        "rsync -av output/ vps.antipodae.fr:/srv/ontoblogie/"
     ]
 }
 
