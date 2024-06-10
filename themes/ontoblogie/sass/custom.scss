@@ -258,13 +258,13 @@ h4 { font-size: 150%; }
   font-weight: 400;
 }
 
-a:hover, a:focus {
+a:not(:has(img)):hover, a:not(:has(img)):focus {
   background-color: #bef9cb;
   color: #333;
   text-decoration: none;
 }
 
-.e-content a {
+.e-content a:not(:has(img)) {
   background: transparent none repeat scroll 0 0;
   border-bottom: 3px solid #cbf8df;
   box-shadow: 0 -4px 0 #bef9cb inset;
@@ -281,7 +281,7 @@ a:hover, a:focus {
   box-shadow: 0 0 0 0;
 }
 
-.e-content  a:hover, .e-content a:focus {
+.e-content  a:not(:has(img)):hover, .e-content a:not(:has(img)):focus {
   background: #bef9cb none repeat scroll 0 0;
   text-decoration: none;
   color: inherit;
