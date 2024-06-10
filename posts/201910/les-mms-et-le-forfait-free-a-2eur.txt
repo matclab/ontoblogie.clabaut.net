@@ -5,6 +5,7 @@
 .. link: 
 .. description: 
 .. type: text
+.. mastodon: 112591867419065677
 
 .. image:: /images/apn-overview.png
      :class: "float-right"

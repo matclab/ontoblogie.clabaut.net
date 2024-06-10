@@ -5,6 +5,7 @@
 .. link: 
 .. description: 
 .. type: text
+.. mastodon: 112591853874087238
 
 .. image:: /images/ledger/dollar.png
      :class: "float-right"
