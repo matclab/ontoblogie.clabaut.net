@@ -11,3 +11,4 @@ state_data.json
 tags
 **.webm
 posts/201812/video
+.mypy_cache
