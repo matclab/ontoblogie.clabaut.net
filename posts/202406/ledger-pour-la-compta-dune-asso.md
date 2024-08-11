@@ -7,6 +7,7 @@ category:
 link: 
 description: 
 type: text
+mastodon: 112945282442285191
 ---
 
 {{% thumbnail "/images/comptable.jpg" imgclass="float-right" %}}{{% /thumbnail %}}
