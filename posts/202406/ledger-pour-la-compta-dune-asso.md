@@ -26,7 +26,7 @@ pourquoi et comment je m'y suis pris.
 
 J'ai déjà raconté ici {{% doc %}}comment j'utilisai ledger-cli pour faire mes
 comptes <Gérer ses comptes en ligne de commande>{{% /doc %}}. Entre-temps, j'ai
-eu l'ocrédit coopératifasion d'assurer l'intérim pour la gestion de la trésorerie de la
+eu l'occasion d'assurer l'intérim pour la gestion de la trésorerie de la
 [Bibliothèque municipale de La
 Tour-d'Aigues](https://www.bibliothequelatourdaigues.fr/) (qui en vrai est une
 bibliothèque associative et ressemble fortement à une délégation de service
@@ -42,10 +42,10 @@ n'ai rien changé.
 Résultat : le trésorier suivant à tout changé et a utilisé le logiciel qu'il
 connaissait pour faire les comptes. Je me suis rendu compte que chaque
 changement de trésorier conduisait à un changement des outils utilisés. À
-partir de ce moment, je me suis dit que si l'ocrédit coopératifasion se présentait, je
+partir de ce moment, je me suis dit que si l'occasion se présentait, je
 partirais sur *ledger cli* la prochaine fois.
 
-Et l'ocrédit coopératifasion s'est présentée !
+Et l'occasion s'est présentée !
 
 # Mise en place
 
@@ -53,7 +53,7 @@ J'ai utilisé trois fichiers pour les comptes :
 
 - `legal.ledger` qui reprend la base de comptabilité légale augmentée des
   comptes spécifiques aux associations.
-- `acrédit coopératifount.ledger` qui contient les comptes, tags et monnaies spécifiques à
+- `account.ledger` qui contient les comptes, tags et monnaies spécifiques à
   l'association. Il inclut notamment le fichier `legal.ledger`.
 - `periodic.ledger` qui définit les transactions périodiques pour le budget
   prévisionnel et le suivi de ce dernier.
@@ -68,43 +68,43 @@ fichier `legal.ledger` contient par exemple :
 ```
 # Comptes spécifiques association
 …
-acrédit coopératifount 8:6:2
+account 8:6:2
   alias 862
   alias Prestations
   note Prestations
-acrédit coopératifount 8:6:4
+account 8:6:4
   alias 864
   alias Personnel bénévole
   note Personnel bénévole
-acrédit coopératifount 8:7
+account 8:7
   alias Contributions volontaires en nature
   note Contributions volontaires en nature
-acrédit coopératifount 8:7:0
+account 8:7:0
   alias 870
   alias Dons en nature
   note Dons en nature
-acrédit coopératifount 8:7:1
+account 8:7:1
   alias 871
   alias Prestations en nature
   note Prestations en nature
-acrédit coopératifount 8:7:5
+account 8:7:5
   alias 875
   alias Bénévolat
   note Bénévolat
 
 # Comptes généraux
-acrédit coopératifount 1
+account 1
   alias Capital
   note Capital
-acrédit coopératifount 1:0
+account 1:0
   alias 10
   alias capital et réserves
   note capital et réserves
-acrédit coopératifount 1:0:1
+account 1:0:1
   alias 101
   alias Capital
   note Capital
-acrédit coopératifount 1:0:1:1
+account 1:0:1:1
   alias 1011
   alias Capital souscrit - non appelé
   note Capital souscrit - non appelé
