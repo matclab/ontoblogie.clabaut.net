@@ -373,7 +373,7 @@ Les fichiers décrits dans cet article sont disponibles sur
 # Problèmes et améliorations
 ## Alias dans les requêtes
 
-[This ledger bug](https://github.com/ledger/ledger/issues/1164) ne permet pas
+[Ce bug de ledger](https://github.com/ledger/ledger/issues/1164) ne permet pas
 d'utiliser les alias dans les requêtes ledger. On doit donc écrire `ledger reg
 5:3:1` plutôt que `ledger reg caisse` pour voir toutes les transactions de la
 caisse. Ce n'est pas pratique. J'espère pouvoir proposer une correction, mais
