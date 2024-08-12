@@ -332,7 +332,7 @@ CONTRIBUTIONS VOLONTAIRES EN NATURE
 Les comptes `8:6:4` et `8:7:5` permettent de comptabiliser les heures des
 bénévoles. Au bilan, le résultat est nul, mais ça permet de montrer aux
 éventuelles parties intéressées (par exemple pour des demandes de subvention)
-l'implication des bénévoles dans l'association. Le plus sur est de faire en
+l'implication des bénévoles dans l'association. Le plus dur est de faire en
 sorte que les bénévoles notent leurs heures…
 
 Une transaction peut se noter en heures :
